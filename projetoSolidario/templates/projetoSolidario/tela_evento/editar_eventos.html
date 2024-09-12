@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    {% include 'global/partials/_head.html' %}
+  </head>
+  <body>
+    {% include 'global/partials/_navbar.html' %}
+    <main class="content">
+      {% block content %}
+        {% if page_obj %}
+          <div class="responsive-table">
+            <table class="contacts-table">
+              <div class="search">
+                <form action="{% url 'projetosolidario:searchevento' %}" method="GET">
+                  <input type="search" class="search-input" placeholder="Buscar" id="search" name="q" value="{{ request.GET.q.strip }}" />
+                </form>
+              </div>
+              <caption class="table-caption">{{ title }}</caption>
+            </table>
+
+            <table class="contacts-table">
+              <thead>
+                <tr class="table-row table-row-header">
+                  <th class="table-header">ID</th>
+                  <th class="table-header">Nome Organizador</th>
+                  <th class="table-header">Nome evento</th>
+                  <th class="table-header">Telefone</th>
+                  <th class="table-header">Email</th>
+                  <th class="table-header">Data evento</th>
+                  <th class="table-header">Tipo evento</th>
+                  <th class="table-header">Local evento</th>
+                  <th class="table-header">Limite evento</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {% for evento in page_obj %}
+                  <tr class="table-row">
+                    <td class="table-cel">
+                      <a href="{% url 'projetosolidario:editaridevento' evento.id %}" class="table-link">{{ evento.id }}</a>
+                    </td>
+                    <td class="table-cel">{{ evento.nome_organizador }}</td>
+                    <td class="table-cel">{{ evento.nome_evento }}</td>
+                    <td class="table-cel">{{ evento.telefone }}</td>
+                    <td class="table-cel">{{ evento.email }}</td>
+                    <td class="table-cel">{{ evento.data_evento }}</td>
+                    <td class="table-cel">{{ evento.get_tipo_evento_display }}</td>
+                    <td class="table-cel">{{ evento.local_evento }}</td>
+                    <td class="table-cel">{{ evento.limite_evento }}</td>
+                  </tr>
+                {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        {% else %}
+          <div class="single-contact">
+            <h1 class="single-contact-name">Nenhum resultado encontrado.</h1>
+          </div>
+        {% endif %}
+      {% endblock %}
+      {% include 'global/partials/_paginator.html' %}
+    </main>
+  </body>
+  {% include 'global/partials/_footer.html' %}
+</html>
