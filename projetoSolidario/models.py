@@ -18,7 +18,8 @@ class Evento(models.Model):
     nome_evento = models.CharField(max_length= 100)
     telefone = models.CharField(max_length=50)
     email = models.EmailField(max_length=254, blank=True)
-    data_evento = models.DateTimeField(default=timezone.now)
+    data_evento = models.DateTimeField(default=timezone.now,)
+    
     local_evento = models.CharField(max_length=50)
     limite_evento = models.CharField(max_length=5)
     

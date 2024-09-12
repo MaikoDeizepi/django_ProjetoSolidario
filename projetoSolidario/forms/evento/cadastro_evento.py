@@ -33,12 +33,13 @@ class EventoForm(forms.ModelForm):
             }
         )
     )
-    data_evento = forms.DateField(
-        widget=forms.DateInput(
+    data_evento = forms.DateTimeField(
+        widget=forms.DateTimeInput(
+            format='%d/%m/%Y %H:%M',  # Formato de data e hora
             attrs={
-                'type': 'date',  # Isso faz com que o campo seja exibido como um seletor de data
+                'type': 'datetime-local',  # Tipo de entrada para data e hora
                 'class': 'form-group',
-                'placeholder': 'Selecione a data do Evento'
+                'placeholder': 'Selecione a data e hora do Evento'
             }
         )
     )

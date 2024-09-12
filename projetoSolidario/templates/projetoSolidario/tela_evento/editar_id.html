@@ -4,25 +4,25 @@
     {% block content %}
     <div class="single-contact">
         <h1 class="single-contact-name">
-            <p>Nome do Evento {{evento.nome_evento}}</p>
+            <p>Nome do evento {{eventos.nome_eventos}}</p>
 
 
 
 
         </h1>
-        <p><b>ID do Evento: </b>{{ evento.id }} </p>
-        <p><b>Nome do Organizador: </b>{{ evento.nome_organizador }} </p>
-        <p><b>Telefone: </b>{{ evento.telefone }} </p>
-        <p><b>E-mail: </b> {{ evento.email }}</p>
-        <p><b>Data do Evento: </b> {{ evento.data_evento }}</p>
-        <p><b>Tipo do Evento: </b> {{ evento.get_tipo_evento_display }}</p>
-        <p><b>Local do Evento: </b> {{ evento.local_evento }}</p>
-        <p><b>Limite do Evento: </b> {{ evento.limite_evento }}</p>
+        <p><b>ID do evento: </b>{{ eventos.id }} </p>
+        <p><b>Nome do Organizador: </b>{{ eventos.nome_organizador }} </p>
+        <p><b>Telefone: </b>{{ eventos.telefone }} </p>
+        <p><b>E-mail: </b> {{ eventos.email }}</p>
+        <p><b>Data do evento: </b> {{ eventos.data_evento }}</p>
+        <p><b>Tipo do evento: </b> {{ eventos.get_tipo_evento_display }}</p>
+        <p><b>Local do evento: </b> {{ eventos.local_evento }}</p>
+        <p><b>Limite do evento: </b> {{ eventos.limite_evento }}</p>
 
         <div class="contact-links">
-            <a class="btn btn-link" href="{% url 'projetosolidario:updatevento' evento.id %}">Atualizar</a>
+            <a class="btn btn-link" href="{% url 'projetosolidario:updateevento' eventos.id  %}">Atualizar</a>
 
-            <form action="{% url 'projetosolidario:deletevento' evento.id %}" method="POST">
+            <form action="{% url 'projetosolidario:deletevento' eventos.id %}" method="POST">
                     {% csrf_token %}
                     {% if confirmation == 'no' %}
                 <input type="hidden" name="confirmation" value="yes">

@@ -55,7 +55,7 @@ def updateempresa(request, empresa_id):
 
         if form.is_valid():
             empresa = form.save()
-            return redirect('projetosolidario:empresa')
+            return redirect('projetosolidario:editaridempresa', empresa_id)
 
         return render(
             request,

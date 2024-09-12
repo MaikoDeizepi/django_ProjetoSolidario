@@ -11,15 +11,15 @@ def criar_evento(request):
 
 
     if request.method == 'POST':
-        form = EventoForm(request.POST)
+        form_evento = EventoForm(request.POST)
 
         context = {
-            'form': form,
+            'form_evento': form_evento,
             'form_action': form_action,
         }
 
-        if form.is_valid():
-            form.save()
+        if form_evento.is_valid():
+            form_evento.save()
             return redirect('projetosolidario:eventos')
 
 
@@ -31,7 +31,7 @@ def criar_evento(request):
         )
 
     context = {
-        'form': EventoForm(),
+        'form_evento': EventoForm(),
         'form_action': form_action,
         'title': 'Cadastro Evento',
     }
@@ -44,58 +44,59 @@ def criar_evento(request):
 
 
 def updateevento(request, evento_id):
-    evento = get_object_or_404(Evento, pk=evento_id)
-    form_action = reverse('projetosolidario:updatevento', args=(evento_id,))
+    eventos = get_object_or_404(Evento, id=evento_id)
+    form_action_evento = reverse('projetosolidario:updateevento',args=(evento_id,))
     
     if request.method == 'POST':
-        form = EventoForm(request.POST, instance=evento)
+        form_evento = EventoForm(request.POST, instance=eventos)
 
         context = {
-            'form': form,
-            'form_action': form_action,
-            'title': 'Editar Evento',  # Atualize o título para deixar claro que é edição
+            'form_evento': form_evento,
+            'form_action_evento': form_action_evento,
+            'title': 'Cadastro Evento',
         }
 
-        if form.is_valid():
-            form.save()
-            return redirect('projetosolidario:eventos')  # Redirecione para a lista de eventos
+        if form_evento.is_valid():
+            form_evento.save()
+            
+            return redirect('projetosolidario:editaridevento', evento_id)
 
-        # Se o form não for válido, renderize o mesmo template de edição
         return render(
             request,
-            'projetoSolidario/tela_evento/editar_eventos.html',  # Verifique se o template está correto
+            'projetoSolidario/tela_evento/criar_evento.html',
             context
         )
 
-    # Se for GET, exibe o formulário de edição
     context = {
-        'form': EventoForm(instance=evento),
-        'form_action': form_action,
-        'title': 'Editar Evento',
+        'form_evento': EventoForm(instance=eventos),
+        'form_action_evento': form_action_evento,
+        'title': 'Cadastro Evento',
     }
+
     return render(
         request,
-        'projetoSolidario/tela_evento/editar_eventos.html',
+        'projetoSolidario/tela_evento/criar_evento.html',
         context
     )
+	
 
 
 def deleteevento(request, evento_id):
-    evento = get_object_or_404(Evento, pk=evento_id)
+    eventos = get_object_or_404(Evento, pk=evento_id)
 
     confirmation = request.POST.get('confirmation', 'no')
 
     if confirmation == 'yes':
-       evento.delete()
+       eventos.delete()
        return redirect(
-                    'projetosolidario:editaridevento'
+                    'projetosolidario:consultarevento'
                   )
     
     return render(
         request, 
-        'projetoSolidario/tela_evento/editar_eventos.html',
+        'projetoSolidario/tela_evento/editar_id.html',
         {
-            'evento':evento,
+            'eventos':eventos,
             'confirmation':confirmation
         }
     )

@@ -27,10 +27,10 @@ def consultar_eventos(request):
 
 def editar_id_evento(request, evento_id):
 
-    single_contact = get_object_or_404(Evento.objects,pk=evento_id )
+    single_contact = get_object_or_404(Evento.objects.filter(pk=evento_id) )
     
     contexto = {
-        'evento': single_contact,
+        'eventos': single_contact,
         'title': 'Consultar Eventos'
     }
   

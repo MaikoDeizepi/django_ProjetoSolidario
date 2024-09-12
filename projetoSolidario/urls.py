@@ -26,7 +26,7 @@ urlpatterns = [
     
     #TELACADASTROEVENTOS
     path('projetosolidario/telaevento_editar_evento/<int:evento_id>/',views.editar_id_evento, name='editaridevento'),
-    path('projetosolidario/telaevento_editar_evento/<int:evento_id>/update/',views.updateevento, name='updatevento'),
+    path('projetosolidario/telaevento_editar_evento/<int:evento_id>/update/',views.updateevento, name='updateevento'),
     path('projetosolidario/telaevento_editar_evento/<int:evento_id>/delete/',views.deleteevento, name='deletevento'),
 
 
