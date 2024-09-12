@@ -4,17 +4,11 @@ from django.shortcuts import get_object_or_404
 
 
 def tela_perfil(request):
-    
-    usuario = Usuario.objects  .filter(pk="2")
-    
+
+    usuario = Usuario.objects.filter(pk="13")
+
     contexto = {
-        'usuario':usuario,
+        "usuario": usuario,
     }
-  
-    return render(
-        request,
-        'projetoSolidario/tela_perfil/tela_perfil.html',
-        contexto
-      
-        
-    )
+
+    return render(request, "projetoSolidario/tela_perfil/tela_perfil.html", contexto)
