@@ -4,8 +4,13 @@ from . import views
 app_name = "projetosolidario"
 
 urlpatterns = [
-    path("", views.home, name="home"),
+    path("", views.index, name="index"),
     path("index/", views.index, name="index"),
+    # TELALOGIN
+    path("projetosolidario/tela_login/forms", views.register, name="criaruser"),
+    path("projetosolidario/", views.logout_view, name="logout"),
+    # TELAHOME
+    path("projetosolidario/home", views.home, name="home"),
     # TELACADASTROEMPRESA
     path(
         "projetosolidario/telacadastro_alterar/<int:empresa_id>/",
@@ -78,7 +83,4 @@ urlpatterns = [
     path("projetosolidario/perfil/", views.tela_perfil, name="perfil"),
     # TELACALENDARIO
     path("projetosolidario/tela_calendario/", views.calendario, name="calendario"),
-    # TELALOGIN
-    path("projetosolidario/tela_login/", views.criar_usuario, name="criaruser"),
-    path("projetosolidario/tela_login/forms", views.register, name="criaruserpronto"),
 ]

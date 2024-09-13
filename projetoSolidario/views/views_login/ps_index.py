@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
-from projetoSolidario.forms.usuario.cadastro_usuario import UsuarioForm
 from django.urls import reverse
 from projetoSolidario.forms.usuario.form_user import RegisterForm
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib import auth, messages
 
 
 def index(request):
@@ -11,38 +12,42 @@ def index(request):
     )
 
 
-def criar_usuario(request):
+def register(request):
     form_action = reverse("projetosolidario:criaruser")
 
     if request.method == "POST":
-        # Inclui request.FILES para lidar com uploads de arquivos, como imagens de perfil
-        form = UsuarioForm(request.POST, request.FILES)
+        form = RegisterForm(request.POST, request.FILES)
 
         if form.is_valid():
             form.save()
             return redirect("projetosolidario:index")
 
-        # Se o formulário não for válido, renderiza a página novamente com os erros
         context = {"form": form, "form_action": form_action}
         return render(
             request, "projetoSolidario/tela_login/criar_cadastro.html", context
         )
 
-    # GET request: renderiza a página de criação de usuário com um formulário vazio
-    context = {"form": UsuarioForm(), "form_action": form_action}
+    context = {"form": RegisterForm(), "form_action": form_action}
 
     return render(request, "projetoSolidario/tela_login/criar_cadastro.html", context)
 
 
-def register(request):
-    form = RegisterForm(request.POST, request.FILES)
+def login_view(request):
+    form = AuthenticationForm(request)
 
     if request.method == "POST":
-        form = RegisterForm(request.POST)
+        form = AuthenticationForm(request, data=request.POST)
 
         if form.is_valid():
-            form.save()
+            user = form.get_user()
+            auth.login(request, user)
+            messages.success(request, "Logado com sucesso!")
+            return redirect("projetosolidario:home")
+        messages.error(request, "Login inválido")
 
-    return render(
-        request, "projetoSolidario/tela_login/forms_auto.html", {"form": form}
-    )
+    return render(request, "projetoSolidario/tela_login/index.html", {"form": form})
+
+
+def logout_view(request):
+    auth.logout(request)
+    return redirect("projetosolidario:index")
