@@ -7,6 +7,7 @@ from django.core.exceptions import ValidationError
 class RegisterForm(UserCreationForm):
 
     email = forms.EmailField()
+    usable_password = None
 
     class Meta:
         model = User

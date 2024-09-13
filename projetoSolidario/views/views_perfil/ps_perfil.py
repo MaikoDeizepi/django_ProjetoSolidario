@@ -1,10 +1,14 @@
 from django.shortcuts import render
 from projetoSolidario.models import Usuario
-from django.shortcuts import get_object_or_404
+from projetoSolidario.forms.usuario.form_user import RegisterForm
+
+from django.contrib.auth.decorators import login_required
 
 
+@login_required(login_url="projetosolidario:index")
 def tela_perfil(request):
 
+    # usuario = RegisterForm.cleaned_data.get('user.is_au')
     usuario = Usuario.objects.filter(pk="13")
 
     contexto = {
