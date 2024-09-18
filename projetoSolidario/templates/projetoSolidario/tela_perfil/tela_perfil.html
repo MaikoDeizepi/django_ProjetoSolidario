@@ -12,6 +12,21 @@
                 <a href="{% url 'projetosolidario:home' %}">Home</a>
               </li>
             </ol>
+
+            {% if usuario.sexo == 'F' %}
+            <h3 class="my-4" style="text-align: center;">Seja Bem-Vinda {{ user.first_name }}</h3>
+
+            {% elif usuario.sexo == 'L' %}
+            <h3 class="my-4" style="text-align: center;">Seja Bem-Vindx {{ user.first_name }}</h3>
+
+            {% elif usuario.sexo == 'P' %}
+            <h3 class="my-4" style="text-align: center;">Olá {{ user.first_name }}</h3>
+
+            {% else %}
+            <h3 class="my-4" style="text-align: center;">Seja Bem-Vindo {{ user.first_name }}</h3>
+
+
+            {% endif %}
           </nav>
         </div>
       </div>
@@ -22,15 +37,18 @@
             <div class="card-body text-center d-flex justify-content-center">
               <!-- Exibir imagem de perfil arredondada -->
               <div>
-                {% for usuarios in usuario %}
-                  {% if usuarios.imagem_perfil %}
-                    <img src="{{ usuarios.imagem_perfil.url }}" alt="Imagem de perfil de {{ usuarios.primeiro_nome }} {{ usuarios.ultimo_nome }}" class="rounded-circle img-fluid" style="width: 150px; height: 150px; object-fit: cover;" />
+                
+                  {% if usuario.imagem_perfil %}
+                    <img src="{{ usuario.imagem_perfil.url }}" alt="Imagem de perfil de {{ user.first_name }} {{ user.last_name }}" class="rounded-circle img-fluid" style="width: 150px; height: 150px; object-fit: cover;" />
                   {% endif %}
-                  <h3 class="my-3">{{ usuarios.primeiro_nome }}</h3>
-                {% endfor %}
+                  
+         
               </div>
+              
             </div>
+            
           </div>
+          
 
           <!-- Redes sociais -->
           <div class="card mb-4 mb-lg-0">
@@ -66,9 +84,8 @@
                 </div>
                 <div class="col-sm-9">
                   <p class="text-muted mb-0">
-                    {% for usuarios in usuario %}
-                      {{ usuarios.primeiro_nome }} {{ usuarios.ultimo_nome }}
-                    {% endfor %}
+                    {{user.first_name}}  {{user.last_name}} 
+                   
                   </p>
                 </div>
               </div>
@@ -79,9 +96,7 @@
                 </div>
                 <div class="col-sm-9">
                   <p class="text-muted mb-0">
-                    {% for usuarios in usuario %}
-                      {{ usuarios.email }}
-                    {% endfor %}
+                    {{user.email}}
                   </p>
                 </div>
               </div>
@@ -92,9 +107,9 @@
                 </div>
                 <div class="col-sm-9">
                   <p class="text-muted mb-0">
-                    {% for usuarios in usuario %}
-                      {{ usuarios.telefone }}
-                    {% endfor %}
+                    
+                      {{ usuario.telefone }}
+                   
                   </p>
                 </div>
               </div>
@@ -105,9 +120,9 @@
                 </div>
                 <div class="col-sm-9">
                   <p class="text-muted mb-0">
-                    {% for usuarios in usuario %}
-                      {{ usuarios.data_nascimento }}
-                    {% endfor %}
+                    
+                      {{ usuario.data_nascimento }}
+                  
                   </p>
                 </div>
               </div>

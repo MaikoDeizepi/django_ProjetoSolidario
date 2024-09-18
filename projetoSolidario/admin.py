@@ -6,7 +6,12 @@ from projetoSolidario import models
 
 
 @admin.register(models.Usuario)
-class UsuarioAdmin(admin.ModelAdmin): ...
+class UsuarioAdmin(admin.ModelAdmin):
+    list_display = (
+        "id",
+        "user",
+        "telefone",
+    )
 
 
 @admin.register(models.Empresa)

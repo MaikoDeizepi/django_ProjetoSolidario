@@ -9,12 +9,11 @@ def tela_perfil(
 ):
 
     # empresa = Empresa.objects.filter().all().order_by("id")
-    usuario = request.user
+    user = request.user
+    usuario = get_object_or_404(Usuario, user=user)
 
     contexto = {
         "usuario": usuario,
     }
 
-    return render(
-        request, "projetoSolidario/tela_perfil/tela_perfil_teste.html", contexto
-    )
+    return render(request, "projetoSolidario/tela_perfil/tela_perfil.html", contexto)
