@@ -3,6 +3,7 @@ from projetoSolidario.forms.usuario.form_user import RegisterForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
+from projetoSolidario.forms.usuario.nao_usar import UsuarioForm
 
 
 def index(request):
