@@ -1,0 +1,19 @@
+{% include 'global/partials/_head.html' %}
+{% include 'global/partials/_navbar.html' %}
+
+<main class="content">
+    <div class="container-fluid">
+        {{ calendar }} <!-- Calendário renderizado aqui -->
+    </div>
+</main>
+
+<main class="content">
+    {% block content %}
+    <div class="button-container-2">
+        <a class="btn" href="{% url 'projetosolidario:calendar' %}?{{ prev_month }}">Mês Anterior</a>
+        <a class="btn" href="{% url 'projetosolidario:event_new' %}">Novo Evento</a>
+        <a class="btn" href="{% url 'projetosolidario:calendar' %}?{{ next_month }}">Próximo Mês</a>
+        
+    </div>
+    {% endblock %}
+</main>

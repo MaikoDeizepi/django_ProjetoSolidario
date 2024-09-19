@@ -13,19 +13,16 @@
               </li>
             </ol>
 
+            <!-- para pegar o ID use {{user.id}} -->
+
             {% if usuario.sexo == 'F' %}
-            <h3 class="my-4" style="text-align: center;">Seja Bem-Vinda {{ user.first_name }}</h3>
-
+              <h3 class="my-4" style="text-align: center;">Seja Bem-Vinda {{ user.first_name }}</h3>
             {% elif usuario.sexo == 'L' %}
-            <h3 class="my-4" style="text-align: center;">Seja Bem-Vindx {{ user.first_name }}</h3>
-
+              <h3 class="my-4" style="text-align: center;">Seja Bem-Vindx {{ user.first_name }}</h3>
             {% elif usuario.sexo == 'P' %}
-            <h3 class="my-4" style="text-align: center;">Olá {{ user.first_name }}</h3>
-
+              <h3 class="my-4" style="text-align: center;">Olá {{ user.first_name }}</h3>
             {% else %}
-            <h3 class="my-4" style="text-align: center;">Seja Bem-Vindo {{ user.first_name }}</h3>
-
-
+              <h3 class="my-4" style="text-align: center;">Seja Bem-Vindo {{ user.first_name }}</h3>
             {% endif %}
           </nav>
         </div>
@@ -37,18 +34,12 @@
             <div class="card-body text-center d-flex justify-content-center">
               <!-- Exibir imagem de perfil arredondada -->
               <div>
-                
-                  {% if usuario.imagem_perfil %}
-                    <img src="{{ usuario.imagem_perfil.url }}" alt="Imagem de perfil de {{ user.first_name }} {{ user.last_name }}" class="rounded-circle img-fluid" style="width: 150px; height: 150px; object-fit: cover;" />
-                  {% endif %}
-                  
-         
+                {% if usuario.imagem_perfil %}
+                  <img src="{{ usuario.imagem_perfil.url }}" alt="Imagem de perfil de {{ user.first_name }} {{ user.last_name }}" class="rounded-circle img-fluid" style="width: 150px; height: 150px; object-fit: cover;" />
+                {% endif %}
               </div>
-              
             </div>
-            
           </div>
-          
 
           <!-- Redes sociais -->
           <div class="card mb-4 mb-lg-0">
@@ -83,10 +74,7 @@
                   <p class="mb-0">Nome Completo</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">
-                    {{user.first_name}}  {{user.last_name}} 
-                   
-                  </p>
+                  <p class="text-muted mb-0">{{ user.first_name }} {{ user.last_name }}</p>
                 </div>
               </div>
               <hr />
@@ -95,9 +83,7 @@
                   <p class="mb-0">Email</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">
-                    {{user.email}}
-                  </p>
+                  <p class="text-muted mb-0">{{ user.email }}</p>
                 </div>
               </div>
               <hr />
@@ -106,11 +92,7 @@
                   <p class="mb-0">Telefone</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">
-                    
-                      {{ usuario.telefone }}
-                   
-                  </p>
+                  <p class="text-muted mb-0">{{ usuario.telefone }}</p>
                 </div>
               </div>
               <hr />
@@ -119,11 +101,16 @@
                   <p class="mb-0">Data de Nascimento</p>
                 </div>
                 <div class="col-sm-9">
-                  <p class="text-muted mb-0">
-                    
-                      {{ usuario.data_nascimento }}
-                  
-                  </p>
+                  <p class="text-muted mb-0">{{ usuario.data_nascimento }}</p>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Username</p>
+                </div>
+                <div class="col-sm-9">
+                  <p class="text-muted mb-0">{{ user.username }}</p>
                 </div>
               </div>
               <hr />

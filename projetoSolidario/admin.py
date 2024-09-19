@@ -29,5 +29,4 @@ class EventoAdmin(admin.ModelAdmin):
     list_display = "id", "nome_organizador", "tipo_evento"
 
 
-@admin.register(models.Calendario)
-class CalendarioAdmin(admin.ModelAdmin): ...
+admin.site.register(models.Event)

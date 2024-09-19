@@ -1,9 +1,7 @@
 from django.db import models
 from django.utils import timezone
-from django import forms
-from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from django.core.exceptions import ValidationError
+from django.urls import reverse
 
 # Create your models here.
 
@@ -80,11 +78,22 @@ class Usuario(models.Model):
     # )
 
 
-class Calendario(models.Model):
+class Event(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
+
+    def save(self, *args, **kwargs):
+        # Certificar-se de que `start_time` e `end_time` são timezone-aware
+        if timezone.is_naive(self.start_time):
+            self.start_time = timezone.make_aware(self.start_time)
+        if timezone.is_naive(self.end_time):
+            self.end_time = timezone.make_aware(self.end_time)
+        super().save(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse("projetosolidario:event_edit", kwargs={"event_id": self.pk})
 
     def __str__(self):
         return self.title
