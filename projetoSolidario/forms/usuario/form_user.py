@@ -10,13 +10,13 @@ class RegisterForm(UserCreationForm):
     # Campos adicionais do modelo Usuario
     data_nascimento = forms.DateField(
         widget=forms.DateInput(
+            format="%d/%m/%Y",  # Formato de data e hora
             attrs={
-                "class": "classe-a classe-b",
-                "placeholder": "Data de Nascimento",
-            }
-        ),
-        label="Data de Nascimento",
-        required=True,
+                "type": "date",  # Tipo de entrada para data e hora
+                "class": "form-group",
+                "placeholder": "Selecione a data de nascimento",
+            },
+        )
     )
 
     sexo = forms.ChoiceField(
