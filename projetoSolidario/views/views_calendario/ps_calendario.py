@@ -1,38 +1,45 @@
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from django.utils.safestring import mark_safe
 import calendar
 from datetime import datetime  # Importando datetime diretamente
 from projetoSolidario.models import (
     Evento,
+)
+from projetoSolidario.forms.evento.cadastro_evento import (
+    EventoForm,
 )  # Certifique-se de que o modelo correto está sendo importado
+
+
+@login_required
+def editar_evento(request, pk):
+    evento = get_object_or_404(Evento, pk=pk)
+
+    contexto = {"eventos": evento, "title": "Consultar Eventos"}
+
+    return render(request, "projetoSolidario/tela_evento/editar_id.html", contexto)
 
 
 class CalendarView(View):
     def get(self, request, *args, **kwargs):
-        # Usar timezone-aware datetime
-        today = timezone.now()  # Usando timezone-aware datetime
+        today = timezone.now()
         year = int(request.GET.get("year", today.year))
         month = int(request.GET.get("month", today.month))
 
-        # Tornar os dias do mês timezone-aware
-        # Criar objetos datetime em vez de date com hora zero
-        first_day = timezone.make_aware(
-            datetime(year, month, 1, 0, 0, 0)
-        )  # Primeiro dia do mês
+        first_day = timezone.make_aware(datetime(year, month, 1, 0, 0, 0))
         days_in_month = calendar.monthrange(year, month)[1]
-        last_day = timezone.make_aware(
-            datetime(year, month, days_in_month, 23, 59, 59)
-        )  # Último dia do mês
+        last_day = timezone.make_aware(datetime(year, month, days_in_month, 23, 59, 59))
 
-        # Alterado para usar o modelo `Evento` e o campo `data_evento`
+        # Aqui você deve garantir que 'eventos' seja uma queryset
         eventos = Evento.objects.filter(
             data_evento__gte=first_day, data_evento__lte=last_day
         )
 
-        cal = Calendar(year, month, events=eventos)
+        cal = Calendar(
+            year, month, events=eventos
+        )  # Certifique-se de que isso é uma queryset
         html_cal = cal.formatmonth(withyear=True)
 
         context = {
@@ -100,18 +107,20 @@ class Calendar:
         return week_html + "</tr>"
 
     def formatday(self, day, events):
-        """
-        Formata o dia do calendário, mostrando os eventos se existirem.
-        """
-        # Filtra eventos com base no dia, considerando que eventos já são timezone-aware
-        events_per_day = events.filter(data_evento__day=day).order_by("data_evento")
-        day_html = ""
-        for event in events_per_day:
-            day_html += f"<li> {event.nome_evento} </li>"
+        if not isinstance(events, (list, set)):  # Garantir que seja uma queryset
+            events_per_day = events.filter(data_evento__day=day).order_by("data_evento")
+        else:
+            events_per_day = []  # Caso events seja uma lista, trate isso adequadamente
 
-        if day_html:
-            return f"<td><span class='date'>{day}</span><ul> {day_html} </ul></td>"
-        return f"<td><span class='date'>{day}</span></td>"
+        d = ""
+        for event in events_per_day:
+            d += (
+                f"<li><a href='{event.get_absolute_url()}'>{event.nome_evento}</a></li>"
+            )
+
+        if day != 0:
+            return f"<td><span class='date'>{day}</span><ul> {d} </ul></td>"
+        return "<td></td>"
 
     def formatmonthname(self, theyear, themonth, withyear=True):
         """

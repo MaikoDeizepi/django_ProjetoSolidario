@@ -7,7 +7,7 @@
     {% include 'global/partials/_navbar.html' %}
     <main class="content">
       {% block content %}
-        {% comment "" %}{% endcomment %}{% if page_obj %}
+        {% if page_obj %}
           <div class="responsive-table">
             <table class="contacts-table">
               <div class="search">

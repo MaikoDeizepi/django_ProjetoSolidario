@@ -83,10 +83,5 @@ urlpatterns = [
     path("projetosolidario/perfil/", views.tela_perfil, name="perfil"),
     # TELACALENDARIO
     path("projetosolidario/calendario/", views.CalendarView.as_view(), name="calendar"),
-    # path("projetosolidario/evento/novo/", views.EventView.as_view(), name="event_new"),
-    # path(
-    #    "projetosolidario/evento/edit/<int:event_id>/",
-    #    views.EventView.as_view(),
-    #    name="event_edit",
-    # ),
+    path("evento/editar/<int:pk>/", views.editar_evento, name="editar_evento"),
 ]

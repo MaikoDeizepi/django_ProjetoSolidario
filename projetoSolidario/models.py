@@ -32,6 +32,9 @@ class Evento(models.Model):
     def __str__(self):
         return f"{self.nome_organizador} {self.tipo_evento}"
 
+    def get_absolute_url(self):
+        return reverse("projetosolidario:editar_evento", kwargs={"pk": self.pk})
+
 
 class Empresa(models.Model):
     razao_social = models.CharField(max_length=100)
