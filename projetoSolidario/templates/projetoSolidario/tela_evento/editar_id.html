@@ -1,4 +1,7 @@
-{% include "global/base.html" %}
+{% include 'global/partials/_head.html' %}
+</head>
+<body>
+  {% include 'global/partials/_navbar.html' %}
 
 <main class="content">
     {% block content %}
@@ -43,3 +46,5 @@
     {% endblock content %}
 
 </main>
+
+{% include 'global/partials/_footer.html' %}

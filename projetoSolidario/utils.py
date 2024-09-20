@@ -1,10 +1,15 @@
 from datetime import datetime
 from calendar import HTMLCalendar
-from .models import Event
+from .models import Evento  # Certifique-se de que o modelo correto está importado
 import locale
+from django.utils import timezone
 
 # Define o local para português do Brasil
-locale.setlocale(locale.LC_TIME, "pt_BR.utf8")
+try:
+    locale.setlocale(locale.LC_TIME, "pt_BR.utf8")
+except locale.Error:
+    # Caso o locale pt_BR.utf8 não esteja disponível no sistema
+    locale.setlocale(locale.LC_TIME, "C")
 
 
 class Calendar(HTMLCalendar):
@@ -15,11 +20,14 @@ class Calendar(HTMLCalendar):
         super(Calendar, self).__init__()
 
     def formatday(self, day, events):
-        events_per_day = events.filter(start_time__day=day).order_by("start_time")
+        # Alterado para usar o campo correto 'data_evento'
+        events_per_day = events.filter(data_evento__day=day).order_by("data_evento")
         d = ""
         for event in events_per_day:
-            # Usar o `get_absolute_url()` atualizado que agora utiliza `event_id`
-            d += f"<li><a href='{event.get_absolute_url()}'>{event.title}</a></li>"
+            # Usar o `get_absolute_url()` atualizado, assumindo que é o correto no modelo
+            d += (
+                f"<li><a href='{event.get_absolute_url()}'>{event.nome_evento}</a></li>"
+            )
 
         if day != 0:
             return f"<td><span class='date'>{day}</span><ul> {d} </ul></td>"
@@ -42,6 +50,7 @@ class Calendar(HTMLCalendar):
         return cal
 
     def formatmonthname(self, theyear, themonth, withyear=True):
+        # Corrigido para utilizar a localidade definida
         month_name = datetime(theyear, themonth, 1).strftime("%B")
         if withyear:
             return f'<tr><th colspan="7" class="month">{month_name} {theyear}</th></tr>'

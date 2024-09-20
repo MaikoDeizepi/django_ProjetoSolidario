@@ -44,7 +44,7 @@ body {
     color: var(--clr-black);
     -webkit-font-smoothing: antialiased;
     background: var(--clr-light-gray);
-    
+
     min-width: 150lvh;
     overflow-x: auto;
 
@@ -106,7 +106,7 @@ svg {
 
 .menu-link {
     padding: auto;
-    
+
     border-radius: var(--default-border-radius);
 }
 
@@ -414,8 +414,8 @@ svg {
     display: flex;
     align-items: center;
     gap: 0 var(--spacing);
-  }
-  
+}
+
 .btn-link {
     font-size: var(--small-font-size);
     text-decoration: none;
@@ -423,86 +423,197 @@ svg {
     padding: 1rem;
     display: block;
     line-height: var(--small-font-size);
-  }
-  
-  .btn-delete {
+}
+
+.btn-delete {
     background: tomato;
-  }
-/* Estilos para o calendário */
-.calendar {
-    width: 100%; /* Ocupa toda a largura disponível */
-    max-width: 800px; /* Define um limite máximo de largura */
-    margin:  auto; /* Centraliza o calendário horizontalmente */
-    font-size: 14px; /* Aumenta o tamanho da fonte */
-    border-collapse: collapse; /* Remove espaçamento entre células */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  }
-  
-  /* Estilos para cabeçalhos de células */
-  .calendar th {
+}
+
+.calendar th {
     padding: 15px;
     text-align: center;
     font-size: 16px;
-    
-    background-color: #69d8dc; /* Cor de fundo para cabeçalhos */
-    border-bottom: 2px solid #ddd; /* Borda inferior */
-  }
-  
-  /* Estilos para células */
-  .calendar td {
-    width: 14.28%; /* Divide igualmente as colunas */
-    height: 80px; /* Aumenta a altura das células */
+
+    background-color: #69d8dc;
+    /* Cor de fundo para cabeçalhos */
+    border-bottom: 2px solid #ddd;
+    /* Borda inferior */
+}
+
+.calendar td {
+    width: 14.28%;
+    /* Divide igualmente as colunas */
+    height: 80px;
+    /* Aumenta a altura das células */
     padding: 10px;
-    text-align: left; /* Alinhamento do texto à esquerda */
-    vertical-align: top; /* Alinhamento vertical no topo */
-    border: 1px solid #ddd; /* Borda clara */
-    transition: background-color 0.3s ease; /* Animação de hover */
-  }
-  
-  /* Cor de fundo para células com eventos */
-  .calendar td.has-event {
-    background-color: #e7f3ff; /* Azul claro para células com eventos */
-  }
-  
-  /* Efeito de hover nas células */
-  .calendar td:hover {
-    background-color: #f7f7f7; /* Cor de fundo ao passar o mouse */
-  }
-  
-  /* Estilos para o mês e ano */
-  .month {
+    text-align: left;
+    /* Alinhamento do texto à esquerda */
+    vertical-align: top;
+    /* Alinhamento vertical no topo */
+    border: 1px solid #ddd;
+    /* Borda clara */
+    transition: background-color 0.3s ease;
+    /* Animação de hover */
+}
+
+.calendar td.has-event {
+    background-color: #e7f3ff;
+    /* Azul claro para células com eventos */
+}
+
+/* Efeito de hover nas células */
+.calendar td:hover {
+    background-color: #f7f7f7;
+    /* Cor de fundo ao passar o mouse */
+}
+
+.month {
     font-size: 22px;
     font-weight: bold;
     text-align: center;
     margin: 10px 0;
-  }
-  
-  /* Estilos para a data */
-  .date {
+}
+
+/* Estilos para a data */
+.date {
     font-size: 12px;
     font-weight: bold;
-  }
-  
-  /* Lista de eventos dentro das células */
-  .calendar ul {
-    list-style: none; /* Remove marcadores da lista */
-    padding: 5px 0 0 0; /* Espaçamento superior */
+}
+
+/* Lista de eventos dentro das células */
+.calendar ul {
+    list-style: none;
+    /* Remove marcadores da lista */
+    padding: 5px 0 0 0;
+    /* Espaçamento superior */
     margin: 0;
     text-align: center;
-  }
-  
-  /* Estilo dos links de eventos */
-  .calendar a {
+}
+
+/* Estilo dos links de eventos */
+.calendar a {
     color: #0d0d7f;
     text-decoration: none;
-  }
-  
-  .calendar a:hover {
-    text-decoration: underline; /* Sublinhado ao passar o mouse */
-  }
-  
-  /* Estilos para o contêiner dos botões */
-  .button-container-2 {
+}
+
+.calendar a:hover {
+    text-decoration: underline;
+    /* Sublinhado ao passar o mouse */
+}
+
+form-calendar {
+    max-width: 600px;
+    /* Define uma largura máxima para o formulário */
+    margin: 20px auto;
+    /* Centraliza o formulário na página */
+    padding: 20px;
+    border: 1px solid #ddd;
+    /* Borda leve ao redor do formulário */
+    border-radius: 8px;
+    /* Cantos arredondados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra suave */
+    background-color: #fff;
+    /* Fundo branco */
+}
+
+/* Estilos para a tabela do formulário */
+table {
+    width: 100%;
+    /* Ocupa toda a largura disponível */
+    border-collapse: collapse;
+    /* Remove espaços entre células */
+}
+
+/* Estilos para as células do formulário */
+table td {
+    padding: 10px;
+    /* Espaçamento interno */
+    text-align: center;
+    /* Centraliza o texto das células */
+}
+
+/* Centraliza o texto dos rótulos do formulário */
+label {
+    text-align: right;
+    /* Alinhamento à direita */
+    display: block;
+    /* Força o label a ser exibido em uma linha separada */
+    margin-bottom: 5px;
+    /* Espaçamento inferior */
+}
+
+/* Estilos para os campos de entrada */
+input,
+select,
+textarea {
+    width: 90%;
+    /* Largura dos campos de entrada */
+    padding: 10px;
+    border: 1px solid #ddd;
+    /* Borda leve */
+    border-radius: 4px;
+    /* Cantos levemente arredondados */
+    font-size: 14px;
+    margin-bottom: 10px;
+    /* Espaço entre os campos */
+}
+
+/* Estilos para as mensagens de erro */
+.alert-danger {
+    color: #721c24;
+    /* Cor do texto */
+    background-color: #f8d7da;
+    /* Cor de fundo */
+    border-color: #f5c6cb;
+    /* Cor da borda */
+    padding: 10px;
+    margin-bottom: 15px;
+    /* Espaçamento inferior */
+    border-radius: 4px;
+    /* Cantos levemente arredondados */
+}
+
+/* Estilos para o contêiner dos botões */
+.button-container {
+    display: flex;
+    /* Usa flexbox para o alinhamento */
+    justify-content: center;
+    /* Centraliza os botões */
+    gap: 15px;
+    /* Espaço entre os botões */
+    margin-top: 20px;
+    /* Espaçamento superior */
+}
+
+/* Estilos para os botões */
+.btn {
+    background-color: #17a2b8;
+    /* Cor de fundo */
+    color: white;
+    /* Cor do texto */
+    padding: 10px 20px;
+    /* Espaçamento interno */
+    text-decoration: none;
+    /* Remove sublinhado */
+    border-radius: 8px;
+    /* Cantos arredondados */
+    border: none;
+    /* Remove a borda */
+    font-size: 14px;
+    /* Tamanho da fonte */
+    cursor: pointer;
+    /* Muda o cursor ao passar sobre o botão */
+    transition: background-color 0.3s ease;
+    /* Animação de hover */
+}
+
+.btn:hover {
+    background-color: #138496;
+    /* Cor de fundo ao passar o mouse */
+}
+
+.button-container-2 {
     display: flex;
     justify-content: center; /* Alinha os botões ao centro */
     gap: 300px; /* Espaçamento entre os botões */
@@ -510,7 +621,7 @@ svg {
   }
   
   /* Estilos para os botões */
-  .button-container .btn {
+  .button-container-2 .btn {
     background-color: #17a2b8;
     color: white;
     padding: 10px 20px;
@@ -522,79 +633,3 @@ svg {
   .button-container .btn:hover {
     background-color: #138496; /* Cor ao passar o mouse */
   }
-
-/* Estilos para o formulário */
-form {
-    max-width: 600px; /* Define uma largura máxima para o formulário */
-    margin: 20px auto; /* Centraliza o formulário na página */
-    padding: 20px;
-    border: 1px solid #ddd; /* Borda leve ao redor do formulário */
-    border-radius: 8px; /* Cantos arredondados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    background-color: #fff; /* Fundo branco */
-  }
-  
-  /* Estilos para a tabela do formulário */
-  table {
-    width: 100%; /* Ocupa toda a largura disponível */
-    border-collapse: collapse; /* Remove espaços entre células */
-  }
-  
-  /* Estilos para as células do formulário */
-  table td {
-    padding: 10px; /* Espaçamento interno */
-    text-align: center; /* Centraliza o texto das células */
-  }
-  
-  /* Centraliza o texto dos rótulos do formulário */
-  label {
-    text-align: right; /* Alinhamento à direita */
-    display: block; /* Força o label a ser exibido em uma linha separada */
-    margin-bottom: 5px; /* Espaçamento inferior */
-  }
-  
-  /* Estilos para os campos de entrada */
-  input, select, textarea {
-    width: 90%; /* Largura dos campos de entrada */
-    padding: 10px;
-    border: 1px solid #ddd; /* Borda leve */
-    border-radius: 4px; /* Cantos levemente arredondados */
-    font-size: 14px;
-    margin-bottom: 10px; /* Espaço entre os campos */
-  }
-  
-  /* Estilos para as mensagens de erro */
-  .alert-danger {
-    color: #721c24; /* Cor do texto */
-    background-color: #f8d7da; /* Cor de fundo */
-    border-color: #f5c6cb; /* Cor da borda */
-    padding: 10px;
-    margin-bottom: 15px; /* Espaçamento inferior */
-    border-radius: 4px; /* Cantos levemente arredondados */
-  }
-  
-  /* Estilos para o contêiner dos botões */
-  .button-container {
-    display: flex; /* Usa flexbox para o alinhamento */
-    justify-content: center; /* Centraliza os botões */
-    gap: 15px; /* Espaço entre os botões */
-    margin-top: 20px; /* Espaçamento superior */
-  }
-  
-  /* Estilos para os botões */
-  .btn {
-    background-color: #17a2b8; /* Cor de fundo */
-    color: white; /* Cor do texto */
-    padding: 10px 20px; /* Espaçamento interno */
-    text-decoration: none; /* Remove sublinhado */
-    border-radius: 8px; /* Cantos arredondados */
-    border: none; /* Remove a borda */
-    font-size: 14px; /* Tamanho da fonte */
-    cursor: pointer; /* Muda o cursor ao passar sobre o botão */
-    transition: background-color 0.3s ease; /* Animação de hover */
-  }
-  
-  .btn:hover {
-    background-color: #138496; /* Cor de fundo ao passar o mouse */
-  }
-  
