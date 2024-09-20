@@ -11,7 +11,7 @@
     {% block content %}
     <div class="button-container-2">
         <a class="btn" href="{% url 'projetosolidario:calendar' %}?{{ prev_month }}">Mês Anterior</a>
-        <a class="btn" href="{% url 'projetosolidario:event_new' %}">Novo Evento</a>
+        <a class="btn" href="{% url 'projetosolidario:criarevento' %}">Novo Evento</a>
         <a class="btn" href="{% url 'projetosolidario:calendar' %}?{{ next_month }}">Próximo Mês</a>
         
     </div>

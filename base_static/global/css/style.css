@@ -254,6 +254,7 @@ svg {
     display: flex;
     flex-direction: column;
     padding-bottom: var(--spacing);
+    align-items: flex-start;
 }
 
 .form-group p,
