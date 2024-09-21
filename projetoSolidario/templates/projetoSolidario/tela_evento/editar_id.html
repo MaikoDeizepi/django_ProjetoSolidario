@@ -21,6 +21,8 @@
         <p><b>Tipo do evento: </b> {{ eventos.get_tipo_evento_display }}</p>
         <p><b>Local do evento: </b> {{ eventos.local_evento }}</p>
         <p><b>Limite do evento: </b> {{ eventos.limite_evento }}</p>
+        <p><b>Empresa que Auxiliará no Evento: </b> {{ eventos.empresa.razao_social }}</p>
+
 
         <div class="contact-links">
             <a class="btn btn-link" href="{% url 'projetosolidario:updateevento' eventos.id  %}">Atualizar</a>
