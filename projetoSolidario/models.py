@@ -17,6 +17,18 @@ class Empresa(models.Model):
         return f"{self.razao_social} {self.nome_fantasia}"
 
 
+class Endereco(models.Model):
+    rua = models.CharField(max_length=100)
+    numero = models.CharField(max_length=10)
+    bairro = models.CharField(max_length=50)
+    cidade = models.CharField(max_length=50)
+    estado = models.CharField(max_length=20)
+    pais = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f"{self.rua} {self.cidade} "
+
+
 class Evento(models.Model):
     EVENTO_CHOICES = (
         ("C", "Doação de Comida"),
@@ -27,6 +39,9 @@ class Evento(models.Model):
     )
     empresa = models.ForeignKey(
         Empresa, on_delete=models.SET_NULL, null=True, blank=True
+    )
+    endereco = models.ForeignKey(
+        Endereco, on_delete=models.SET_NULL, null=True, blank=True
     )
 
     tipo_evento = models.CharField(
@@ -39,8 +54,6 @@ class Evento(models.Model):
     data_evento = models.DateTimeField(
         default=timezone.now,
     )
-
-    local_evento = models.CharField(max_length=100)
     limite_evento = models.CharField(max_length=5)
 
     def __str__(self):
@@ -48,18 +61,6 @@ class Evento(models.Model):
 
     def get_absolute_url(self):
         return reverse("projetosolidario:editar_evento", kwargs={"pk": self.pk})
-
-
-class Endereco(models.Model):
-    rua = models.CharField(max_length=100)
-    numero = models.CharField(max_length=10)
-    bairro = models.CharField(max_length=50)
-    cidade = models.CharField(max_length=50)
-    estado = models.CharField(max_length=20)
-    pais = models.CharField(max_length=50)
-
-    def __str__(self):
-        return f"{self.rua} {self.cidade} "
 
 
 class Usuario(models.Model):

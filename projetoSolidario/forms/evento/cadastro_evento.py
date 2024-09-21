@@ -1,7 +1,7 @@
 import re
 from django import forms
 from django.core.exceptions import ValidationError
-from projetoSolidario.models import Evento, Empresa
+from projetoSolidario.models import Evento, Empresa, Endereco
 
 
 class EventoForm(forms.ModelForm):
@@ -27,9 +27,7 @@ class EventoForm(forms.ModelForm):
             },
         )
     )
-    local_evento = forms.CharField(
-        widget=forms.TextInput(attrs={"placeholder": "Digite o local do seu evento"})
-    )
+
     limite_evento = forms.IntegerField(
         widget=forms.NumberInput(attrs={"placeholder": "Digite o limite do seu evento"})
     )
@@ -41,6 +39,13 @@ class EventoForm(forms.ModelForm):
         label="Empresa que irá auxiliar no Evento",
     )
 
+    endereco = forms.ModelChoiceField(
+        queryset=Endereco.objects.all(),
+        widget=forms.Select(attrs={"class": "form-control"}),
+        required=False,
+        label="Endereço do Evento",
+    )
+
     class Meta:
         model = Evento
         fields = (
@@ -50,9 +55,9 @@ class EventoForm(forms.ModelForm):
             "email",
             "data_evento",
             "tipo_evento",
-            "local_evento",
             "limite_evento",
-            "empresa",  # Incluindo campo empresa
+            "empresa",
+            "endereco",  # Incluindo campo empresa
         )
 
     def clean_telefone(self):

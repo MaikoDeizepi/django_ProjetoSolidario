@@ -5,3 +5,5 @@ from projetoSolidario.forms.evento import *
 from projetoSolidario.forms.usuario import *
 
 from projetoSolidario.forms.calendario import *
+
+from projetoSolidario.forms.endereco import *

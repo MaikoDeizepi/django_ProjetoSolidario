@@ -19,9 +19,10 @@
         <p><b>E-mail: </b> {{ eventos.email }}</p>
         <p><b>Data do evento: </b> {{ eventos.data_evento }}</p>
         <p><b>Tipo do evento: </b> {{ eventos.get_tipo_evento_display }}</p>
-        <p><b>Local do evento: </b> {{ eventos.local_evento }}</p>
+        <p><b>Endereço do Evento: </b> {{ eventos.endereco.rua }},{{ eventos.endereco.bairro }}, {{ eventos.endereco.cidade }}</p>
         <p><b>Limite do evento: </b> {{ eventos.limite_evento }}</p>
         <p><b>Empresa que Auxiliará no Evento: </b> {{ eventos.empresa.razao_social }}</p>
+
 
 
         <div class="contact-links">
