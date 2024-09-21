@@ -47,17 +47,21 @@ body {
 
     min-width: 150lvh;
     overflow-x: auto;
-
+    padding-bottom: 50px;
 
 
 }
 
 
 footer {
-    position: relative;
-    bottom: 0%;
+    position: fixed; /* Ou use 'sticky' se preferir */
+    bottom: 0;
     width: 100%;
     height: auto;
+    background-color: #f8f9fa; /* Exemplo de cor de fundo */
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* Exemplo de sombra */
+    text-align: center; /* Centralizar o texto */
+    padding: 2px 0; /* Espaçamento interno */
 }
 
 img,
@@ -287,10 +291,11 @@ svg {
     background-color: var(--link-dark-color);
     color: var(--clr-white);
     font-weight: bold;
-    border: none;
     padding: 1rem 2rem;
     border-radius: var(--default-border-radius);
     cursor: pointer;
+    
+    
 }
 
 .btn:hover {
@@ -381,6 +386,11 @@ svg {
 
 .nav-item.dropdown:hover .dropdown-menu {
     display: block;
+}
+
+.form-content{
+
+    display: flexbox;
 }
 
 @media (max-width: 768px) {

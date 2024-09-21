@@ -5,10 +5,13 @@ from .models import Evento  # Certifique-se de que o modelo correto está import
 import locale
 
 # Define o locale para português do Brasil
+import locale
+from datetime import datetime
+
 try:
-    locale.setlocale(locale.LC_TIME, "pt_BR.utf8")
+    locale.setlocale(locale.LC_TIME, "pt_BR.UTF-8")
 except locale.Error:
-    locale.setlocale(locale.LC_TIME, "")  # Fallback para o locale padrão do sistema
+    locale.setlocale(locale.LC_TIME, "")  # Fallback
 
 
 class Calendar(HTMLCalendar):

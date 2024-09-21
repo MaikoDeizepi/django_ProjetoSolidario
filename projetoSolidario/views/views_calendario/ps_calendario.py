@@ -11,6 +11,13 @@ from projetoSolidario.models import (
 from projetoSolidario.forms.evento.cadastro_evento import (
     EventoForm,
 )  # Certifique-se de que o modelo correto está sendo importado
+import locale
+
+
+try:
+    locale.setlocale(locale.LC_TIME, "pt_BR.UTF-8")
+except locale.Error:
+    locale.setlocale(locale.LC_TIME, "")  # Fallback para o locale padrão do sistema
 
 
 @login_required
@@ -123,22 +130,25 @@ class Calendar:
         return "<td></td>"
 
     def formatmonthname(self, theyear, themonth, withyear=True):
-        """
-        Cabeçalho do mês.
-        """
+        # Utiliza a localidade definida para mostrar o nome do mês em português
+        month_name = datetime(theyear, themonth, 1).strftime("%B")
+        # Capitaliza a primeira letra do nome do mês e inclui o ano, se necessário
         if withyear:
-            s = f"{calendar.month_name[themonth]} {theyear}"
+            return f'<tr><th colspan="7" class="month">{month_name.capitalize()} {theyear}</th></tr>'
         else:
-            s = f"{calendar.month_name[themonth]}"
-        return f"<tr><th colspan='7' class='month'>{s}</th></tr>"
+            return (
+                f'<tr><th colspan="7" class="month">{month_name.capitalize()}</th></tr>'
+            )
 
     def formatweekheader(self):
         """
-        Cabeçalho da semana.
+        Cabeçalho da semana com dias em português.
         """
         s = ""
-        for day in calendar.weekheader(2).split():
-            s += f"<th class='weekday'>{day}</th>"
+        # Utiliza os nomes dos dias em português
+        dias_semana = ["Seg", "Ter", "Qua", "Qui", "Sex", "Sáb", "Dom"]
+        for dia in dias_semana:
+            s += f"<th class='weekday'>{dia}</th>"
         return f"<tr>{s}</tr>"
 
     def monthdays2calendar(self, year, month):
