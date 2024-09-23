@@ -31,5 +31,13 @@ class EventoAdmin(admin.ModelAdmin):
 
 admin.site.register(models.Event)
 
-admin.site.register(models.Pais)
-admin.site.register(models.Estado)
+
+@admin.register(models.Pais)
+class PaisAdmin(admin.ModelAdmin):
+    list_filter = ("nome",)
+
+
+@admin.register(models.Estado)
+class EstadoAdmin(admin.ModelAdmin):
+    list_filter = "sigla", "pais"
+    list_display = "sigla", "pais"

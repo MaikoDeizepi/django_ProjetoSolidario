@@ -93,4 +93,6 @@ urlpatterns = [
     path(
         "projetosolidario/endereco/", views.tela_cadastro_endereco, name="criarendereco"
     ),
+    # EMAIL
+    # path("projetosolidario/email", views.enviar_email_cadastro, name="emailcadastro"),
 ]

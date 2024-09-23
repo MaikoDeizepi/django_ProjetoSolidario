@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Bem-vindo ao Projeto Solidário!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .container {
+            background-color: #ffffff;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 600px;
+            max-width: 100%;
+        }
+        .header {
+            background-color: #2196f3;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+        .header img {
+            width: 100px;
+            display: block;
+            margin: 0 auto 10px;
+        }
+        .hero {
+            text-align: center;
+            padding: 30px 20px;
+        }
+        .hero h1 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .hero p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .cta-button {
+            display: inline-block;
+            padding: 15px 25px;
+            background-color: #ff9800;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .features {
+            margin: 20px 0;
+        }
+        .feature {
+            margin-bottom: 15px;
+        }
+        .feature img {
+            width: 50px;
+            display: block;
+            margin: 0 auto 10px;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333333;
+            color: #ffffff;
+            border-radius: 0 0 8px 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <!-- Logo do Projeto -->
+
+            <h1>Projeto Solidário</h1>
+        </div>
+
+        <div class="hero">
+            <h1>Bem-vindo, {{primeiro_nome}}  {{segundo_nome}}!</h1>
+            <p>Obrigado por se inscrever no nosso projeto. Estamos felizes em tê-lo conosco nessa jornada de transformação e impacto social!</p>
+            
+        </div>
+
+        <div class="features">
+            <div class="feature">
+                <img src="https://img.icons8.com/ios/100/000000/charity.png" alt="Voluntariado">
+                <h2>Voluntariado</h2>
+                <p>Ajude-nos com seu tempo e habilidades. Seja voluntário em nossos eventos e campanhas.</p>
+            </div>
+            <div class="feature">
+                <img src="https://img.icons8.com/ios/100/000000/donation.png" alt="Doações">
+                <h2>Doações</h2>
+                <p>Contribua financeiramente para ajudar aqueles que mais precisam. Toda doação faz a diferença!</p>
+            </div>
+            <div class="feature">
+                <img src="https://img.icons8.com/ios/100/000000/community-grants.png" alt="Campanhas">
+                <h2>Campanhas</h2>
+                <p>Participe de nossas campanhas solidárias e ajude a divulgar ações importantes para a comunidade.</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Projeto Solidário. Todos os direitos reservados.</p>
+            <p>Este é um e-mail automático. Não responda a esta mensagem.</p>
+        </div>
+    </div>
+</body>
+</html>

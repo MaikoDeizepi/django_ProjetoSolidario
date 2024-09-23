@@ -3,6 +3,11 @@ from projetoSolidario.forms.usuario.form_user import RegisterForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib import auth, messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user_model
+from projetoSolidario.views.views_email.ps_email_cadastro import enviar_email_cadastro
+
+
+User = get_user_model()
 
 
 def index(request):
@@ -22,23 +27,25 @@ def index(request):
 
 
 def register(request):
-
     if request.method == "POST":
         form = RegisterForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            # Salva o usuário no banco de dados
+            user = form.save()
+            messages.success(request, "Cadastro realizado com sucesso!")
+
+            # Chama a função para enviar o e-mail de boas-vindas
+            enviar_email_cadastro(user)
 
             return redirect("projetosolidario:index")
+        else:
+            messages.error(request, "Erro ao realizar cadastro.")
 
-        context = {
-            "form": form,
-        }
-        return render(
-            request, "projetoSolidario/tela_login/criar_cadastro.html", context
-        )
+    else:
+        form = RegisterForm()
 
     context = {
-        "form": RegisterForm(),
+        "form": form,
     }
     return render(request, "projetoSolidario/tela_login/criar_cadastro.html", context)
 

@@ -77,6 +77,8 @@ class RegisterForm(UserCreationForm):
             )
         return telefone
 
+    # Função para validar o username
+
     # Função para salvar os dados de User e Usuario
     def save(self, commit=True):
         user = super().save(commit=False)  # Salva os dados do User

@@ -29,3 +29,6 @@ from .views_calendario.ps_calendario import *
 
 # VIEWENDERECO
 from .views_endereco.ps_endereco import *
+
+# VIEWEMAIL
+from .views_email.ps_email_cadastro import *
