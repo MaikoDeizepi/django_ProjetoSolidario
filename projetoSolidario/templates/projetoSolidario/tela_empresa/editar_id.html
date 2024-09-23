@@ -24,8 +24,10 @@
 
         <div class="contact-links">
             <a class="btn btn-link" href="{% url 'projetosolidario:updatempresa' empresa.id %}">Atualizar</a>
+            
 
             <form action="{% url 'projetosolidario:deletempresa' empresa.id %}" method="POST">
+              
                 {% csrf_token %}
                 {% if confirmation == 'no' %}
           <input type="hidden" name="confirmation" value="yes">
@@ -35,6 +37,7 @@
         {% endif %}
 
             </form>
+            <button onclick="history.back()" class="btn btn-link" >Voltar</button>
 
             
         </div>

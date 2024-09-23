@@ -30,3 +30,6 @@ class EventoAdmin(admin.ModelAdmin):
 
 
 admin.site.register(models.Event)
+
+admin.site.register(models.Pais)
+admin.site.register(models.Estado)

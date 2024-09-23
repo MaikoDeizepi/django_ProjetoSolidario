@@ -298,6 +298,8 @@ svg {
     
 }
 
+
+
 .btn:hover {
     filter: brightness(90%);
 }
@@ -312,27 +314,10 @@ svg {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(to right, #8c52ff, #5ce1e6);
     padding: 10px 20px;
 
 }
 
-
-
-.navbar-brand {
-    font-size: 24px;
-    font-weight: bold;
-    color: rgb(148, 41, 235);
-}
-
-.navbar-toggler {
-    background-color: rgb(28, 44, 227);
-    border: none;
-    cursor: pointer;
-    display: none;
-    padding: 10px;
-    border-radius: 5px;
-}
 
 .navbar-collapse {
     display: flex;
@@ -346,6 +331,10 @@ svg {
     align-items: auto;
 }
 
+.navbar-brand{
+    font-size: 20px; 
+    object-fit: cover;
+}
 .nav-item {
     margin-left: 15px;
 }
@@ -393,31 +382,7 @@ svg {
     display: flexbox;
 }
 
-@media (max-width: 768px) {
-    .navbar-toggler {
-        display: block;
-    }
 
-    .navbar-collapse {
-        display: none;
-        flex-direction: column;
-        justify-content: center;
-    }
-
-    .navbar-nav {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .nav-item {
-        width: 100%;
-        text-align: center;
-    }
-
-    .navbar-collapse.show {
-        display: flex;
-    }
-}
 
 .contact-links {
     margin-block: calc(var(--small-font-size) * 2);

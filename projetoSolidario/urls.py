@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+from django.contrib.auth.decorators import login_required
 
 app_name = "projetosolidario"
 
@@ -82,7 +83,11 @@ urlpatterns = [
     # TELAPERFIL
     path("projetosolidario/perfil/", views.tela_perfil, name="perfil"),
     # TELACALENDARIO
-    path("projetosolidario/calendario/", views.CalendarView.as_view(), name="calendar"),
+    path(
+        "projetosolidario/calendario/",
+        login_required(views.CalendarView.as_view()),
+        name="calendar",
+    ),
     path("evento/editar/<int:pk>/", views.editar_evento, name="editar_evento"),
     # TELAENDERECO
     path(

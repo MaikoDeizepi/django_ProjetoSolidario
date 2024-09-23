@@ -2,8 +2,46 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
+import pycountry
 
 # Create your models here.
+
+
+class Pais(models.Model):
+    nome = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.nome
+
+
+class Estado(models.Model):
+    nome = models.CharField(max_length=50)
+    sigla = models.CharField(max_length=2)
+    pais = models.ForeignKey(
+        Pais, on_delete=models.CASCADE
+    )  # Adicione esta linha para a relação com País
+
+    def __str__(self):
+        return f"{self.nome} ({self.sigla})"
+
+
+class Endereco(models.Model):
+    estado = (
+        ("C", "Doação de Comida"),
+        ("R", "Doação de Roupas"),
+        ("P", "Doação de Pets+"),
+        ("E", "Evento Assistencial"),
+        ("O", "Outros"),
+    )
+    rua = models.CharField(max_length=100)
+    numero = models.CharField(max_length=10)
+    bairro = models.CharField(max_length=50)
+    cidade = models.CharField(max_length=50)
+    estado = models.ForeignKey(Estado, on_delete=models.SET_NULL, null=True, blank=True)
+    pais = models.ForeignKey(Pais, on_delete=models.SET_NULL, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.rua} {self.cidade} "
 
 
 class Empresa(models.Model):
@@ -15,18 +53,6 @@ class Empresa(models.Model):
 
     def __str__(self):
         return f"{self.razao_social} {self.nome_fantasia}"
-
-
-class Endereco(models.Model):
-    rua = models.CharField(max_length=100)
-    numero = models.CharField(max_length=10)
-    bairro = models.CharField(max_length=50)
-    cidade = models.CharField(max_length=50)
-    estado = models.CharField(max_length=20)
-    pais = models.CharField(max_length=50)
-
-    def __str__(self):
-        return f"{self.rua} {self.cidade} "
 
 
 class Evento(models.Model):
@@ -77,12 +103,6 @@ class Usuario(models.Model):
     sexo = models.CharField(max_length=1, choices=SEXO_CHOICES, blank=False, null=False)
     telefone = models.CharField(max_length=20, blank=True)
     imagem_perfil = models.ImageField(blank=True, upload_to="pictures/%Y/%m/")
-
-    # endereco = models.ForeignKey(
-    #    Endereco,
-    #    on_delete=models.SET_NULL,
-    #    blank=True, null=True
-    # )
 
 
 class Event(models.Model):

@@ -28,4 +28,4 @@ from .views_perfil.ps_perfil import *
 from .views_calendario.ps_calendario import *
 
 # VIEWENDERECO
-from .views_endereo.ps_endereco import *
+from .views_endereco.ps_endereco import *

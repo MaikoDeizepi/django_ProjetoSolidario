@@ -46,7 +46,9 @@
                 {% endfor %}
               </tbody>
             </table>
+          
           </div>
+          
         {% else %}
           <div class="single-contact">
             <h1 class="single-contact-name">Nenhum resultado encontrado.</h1>
@@ -54,6 +56,9 @@
         {% endif %}
       {% endblock %}
       {% include 'global/partials/_paginator.html' %}
+
+      <button onclick="history.back()" class="btn btn-link" >Voltar</button>
+
     </main>
   </body>
   {% include 'global/partials/_footer.html' %}

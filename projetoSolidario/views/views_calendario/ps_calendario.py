@@ -20,7 +20,7 @@ except locale.Error:
     locale.setlocale(locale.LC_TIME, "")  # Fallback para o locale padrão do sistema
 
 
-@login_required
+@login_required(login_url="projetosolidario:index")
 def editar_evento(request, pk):
     evento = get_object_or_404(Evento, pk=pk)
 
@@ -30,6 +30,7 @@ def editar_evento(request, pk):
 
 
 class CalendarView(View):
+
     def get(self, request, *args, **kwargs):
         today = timezone.now()
         year = int(request.GET.get("year", today.year))
@@ -79,6 +80,8 @@ def next_month(year, month):
 
 
 # Lógica da classe Calendar no utils.py (garantir que a classe esteja corretamente implementada)
+
+
 class Calendar:
     def __init__(self, year, month, events=None):
         self.year = year
