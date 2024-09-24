@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Cadastro Atualizado - Projeto Solidário</title>
+    <title>Evento Cancelado - Projeto Solidário</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -59,17 +59,12 @@
         </div>
 
         <div class="content">
-            <h2>Cadastro Alterado com Sucesso!</h2>
-            <p>Olá, {{ nome_fantasia }}. O cadastro de sua empresa foi atualizado com sucesso.</p>
-
-            <p>Os seguintes campos do seu cadastro foram alterados:</p>
-            <ul>
-                {% for campo, valores in valores_alterados.items %}
-                    <li><strong>{{ campo|upper }}:</strong> de "{{ valores.antigo }}" para "{{ valores.novo }}"</li>
-                {% endfor %}
-            </ul>
-
-            <p>Se você não reconhece esta alteração, por favor, entre em contato conosco imediatamente.</p>
+            <h2>Evento Cancelado</h2>
+            <p>Olá, {{ nome_organizador }}.</p>
+            <p>É com grande pesar que informamos que o evento "{{ nome_evento }}" foi cancelado/excluído do Projeto Solidário.</p>
+            <p>Entendemos que esta notícia pode ser decepcionante, mas esperamos que você continue a encontrar maneiras de fazer o bem e impactar positivamente a sociedade.</p>
+            <p>Se esta exclusão foi um engano ou se você mudar de ideia, estaremos de braços abertos para recebê-lo de volta a qualquer momento.</p>
+            <p>Desejamos a você e sua equipe todo sucesso e felicidade. Nunca esqueça: juntos, fazemos a diferença.</p>
         </div>
 
         <div class="footer">

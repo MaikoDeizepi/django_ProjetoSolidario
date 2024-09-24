@@ -5,6 +5,8 @@ from projetoSolidario.models import Evento
 from django.contrib.auth.decorators import login_required
 from projetoSolidario.views.views_email.ps_email_cadastro_evento import (
     enviar_email_cadastro,
+    enviar_email_cadastro_atualizar,
+    enviar_email_cadastro_exclusao,
 )
 
 
@@ -53,6 +55,21 @@ def updateevento(request, evento_id):
         }
 
         if form_evento.is_valid():
+            if form_evento.has_changed():
+                campos_alterados = form_evento.changed_data
+                # Remover o campo 'id' da lista de campos alterados, se presente
+                if "id" in campos_alterados:
+                    campos_alterados.remove("id")
+                print("Campos alterados:", campos_alterados)
+
+                valores_alterados = {}
+                for campo in campos_alterados:
+                    valores_alterados[campo] = {
+                        "antigo": form_evento.initial[campo],
+                        "novo": form_evento.cleaned_data[campo],
+                    }
+                    print("Valores alterados:", valores_alterados)
+                enviar_email_cadastro_atualizar(eventos, valores_alterados)
             form_evento.save()
 
             return redirect("projetosolidario:editaridevento", evento_id)
@@ -77,6 +94,7 @@ def deleteevento(request, evento_id):
     confirmation = request.POST.get("confirmation", "no")
 
     if confirmation == "yes":
+        enviar_email_cadastro_exclusao(eventos)
         eventos.delete()
         return redirect("projetosolidario:consultarevento")
 

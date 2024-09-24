@@ -34,7 +34,6 @@
         }
         .content {
             padding: 20px;
-            text-align: center;
         }
         .content h2 {
             font-size: 20px;
@@ -42,6 +41,16 @@
         }
         .content p {
             margin: 10px 0;
+        }
+        .content ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .content ul li {
+            background-color: #f9f9f9;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 4px;
         }
         .footer {
             text-align: center;
@@ -60,16 +69,16 @@
 
         <div class="content">
             <h2>Cadastro Alterado com Sucesso!</h2>
-            <p>Olá, {{ nome_fantasia }}. O cadastro de sua empresa foi atualizado com sucesso.</p>
+            <p>Olá, {{ nome_organizador }}. Algumas informações do seu evento foram alteradas.</p>
 
-            <p>Os seguintes campos do seu cadastro foram alterados:</p>
+            <p>Os seguintes dados do seu evento foram alterados:</p>
             <ul>
                 {% for campo, valores in valores_alterados.items %}
                     <li><strong>{{ campo|upper }}:</strong> de "{{ valores.antigo }}" para "{{ valores.novo }}"</li>
                 {% endfor %}
             </ul>
 
-            <p>Se você não reconhece esta alteração, por favor, entre em contato conosco imediatamente.</p>
+            <p>Se atente para nao perder a oportunidade de fazer o bem.</p>
         </div>
 
         <div class="footer">

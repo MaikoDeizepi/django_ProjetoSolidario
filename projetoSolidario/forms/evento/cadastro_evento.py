@@ -2,6 +2,7 @@ import re
 from django import forms
 from django.core.exceptions import ValidationError
 from projetoSolidario.models import Evento, Empresa, Endereco
+from django.utils import timezone
 
 
 class EventoForm(forms.ModelForm):
@@ -28,7 +29,7 @@ class EventoForm(forms.ModelForm):
         )
     )
 
-    limite_evento = forms.IntegerField(
+    limite_evento = forms.CharField(
         widget=forms.NumberInput(attrs={"placeholder": "Digite o limite do seu evento"})
     )
     # Adicionar campo de escolha de empresa
@@ -59,6 +60,13 @@ class EventoForm(forms.ModelForm):
             "empresa",
             "endereco",  # Incluindo campo empresa
         )
+
+    def __init__(self, *args, **kwargs):
+        super(EventoForm, self).__init__(*args, **kwargs)
+        if self.instance and self.instance.pk:
+            self.fields["data_evento"].initial = self.instance.data_evento
+        else:
+            self.fields["data_evento"].initial = timezone.now()
 
     def clean_telefone(self):
         telefone = self.cleaned_data.get("telefone")
