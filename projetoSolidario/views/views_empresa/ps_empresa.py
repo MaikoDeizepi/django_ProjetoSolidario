@@ -7,6 +7,8 @@ from projetoSolidario.models import Empresa
 from django.contrib.auth.decorators import login_required
 from projetoSolidario.views.views_email.ps_email_cadastro_empresa import (
     enviar_email_cadastro,
+    enviar_email_cadastro_atualizar,
+    enviar_email_cadastro_excluir,
 )
 
 
@@ -66,7 +68,25 @@ def updateempresa(request, empresa_id):
         }
 
         if form.is_valid():
+            if form.has_changed():
+                campos_alterados = form.changed_data
+                # Remover o campo 'id' da lista de campos alterados, se presente
+                if "id" in campos_alterados:
+                    campos_alterados.remove("id")
+                print("Campos alterados:", campos_alterados)
+
+                valores_alterados = {}
+                for campo in campos_alterados:
+                    valores_alterados[campo] = {
+                        "antigo": form.initial[campo],
+                        "novo": form.cleaned_data[campo],
+                    }
+                    print("Valores alterados:", valores_alterados)
+                enviar_email_cadastro_atualizar(empresa, valores_alterados)
+                # Aqui você pode adicionar lógica adicional para processar os campos alterados
+
             empresa = form.save()
+
             return redirect("projetosolidario:editaridempresa", empresa_id)
 
         return render(
@@ -89,7 +109,9 @@ def deletempresa(request, empresa_id):
     confirmation = request.POST.get("confirmation", "no")
 
     if confirmation == "yes":
+        enviar_email_cadastro_excluir(empresa)
         empresa.delete()
+
         return redirect("projetosolidario:editarempresa")
 
     return render(

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro Atualizado - Projeto Solidário</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .container {
+            background-color: #ffffff;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            width: 600px;
+            max-width: 100%;
+        }
+        .header {
+            background-color: #8c52ff;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px 8px 0 0;
+        }
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+        .content {
+            padding: 20px;
+        }
+        .content h2 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        .content p {
+            margin: 10px 0;
+        }
+        .content ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .content ul li {
+            background-color: #f9f9f9;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #8c52ff;
+            color: #ffffff;
+            border-radius: 0 0 8px 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Projeto Solidário</h1>
+        </div>
+
+        <div class="content">
+            <h2>Cadastro Alterado com Sucesso!</h2>
+            <p>Olá, {{ nome_fantasia }}. O cadastro de sua empresa foi atualizado com sucesso.</p>
+
+            <p>Os seguintes campos do seu cadastro foram alterados:</p>
+            <ul>
+                {% for campo, valores in valores_alterados.items %}
+                    <li><strong>{{ campo|upper }}:</strong> de "{{ valores.antigo }}" para "{{ valores.novo }}"</li>
+                {% endfor %}
+            </ul>
+
+            <p>Se você não reconhece esta alteração, por favor, entre em contato conosco imediatamente.</p>
+        </div>
+
+        <div class="footer">
+            <p>© 2024 Projeto Solidário. Todos os direitos reservados.</p>
+            <p>Este é um e-mail automático. Não responda a esta mensagem.</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -7,16 +7,13 @@
 
 
     {% block content %}
-    <div class="single-contact">
-        <h1 class="single-contact-name">
-            <p>Razão Social e Nome Fantasia: <br>{{empresa.razao_social}} {{empresa.nome_fantasia}}</p>
 
 
 
 
-        </h1>
+        <p><b>Razão Social:</b> {{empresa.razao_social}}</p>
 
-        <p><b>ID:</b> {{empresa.id}}</p>
+        <p><b>Nome Fantasia:</b> {{empresa.nome_fantasia}}</p>
         <p><b>CNPJ:</b> {{empresa.cnpj}}</p>
         <p><b>TELEFONE:</b> {{empresa.telefone}}</p>
         <p><b>E-MAIL:</b> {{empresa.email}}</p>
