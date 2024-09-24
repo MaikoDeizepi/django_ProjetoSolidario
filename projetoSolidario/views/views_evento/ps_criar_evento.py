@@ -3,6 +3,9 @@ from django.urls import reverse
 from projetoSolidario.forms.evento.cadastro_evento import EventoForm
 from projetoSolidario.models import Evento
 from django.contrib.auth.decorators import login_required
+from projetoSolidario.views.views_email.ps_email_cadastro_evento import (
+    enviar_email_cadastro,
+)
 
 
 @login_required(login_url="projetosolidario:index")
@@ -19,6 +22,7 @@ def criar_evento(request):
 
         if form_evento.is_valid():
             form_evento.save()
+            enviar_email_cadastro(form_evento.save())
             return redirect("projetosolidario:eventos")
 
         return render(

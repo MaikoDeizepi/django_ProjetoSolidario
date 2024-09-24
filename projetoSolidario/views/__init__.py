@@ -2,7 +2,6 @@ from .ps_home import *
 
 # VIEWEMPRESA
 from .views_empresa.ps_empresa import *
-from .views_empresa.ps_telacadastro import *
 from .views_empresa.ps_crudcadastro import *
 from .views_empresa.ps_editarempresa import *
 
@@ -10,7 +9,6 @@ from .views_empresa.ps_editarempresa import *
 # VIEWEVENTOS
 from .views_evento.ps_eventos import *
 from .views_evento.ps_telaevento import *
-from .views_evento.ps_crudevento import *
 from .views_evento.ps_criar_evento import *
 from .views_evento.ps_consultar_eventos import *
 

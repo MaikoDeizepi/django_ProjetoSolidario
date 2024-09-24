@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -39,7 +38,7 @@
             padding: 30px 20px;
         }
         .hero h1 {
-            font-size: 24px;
+            font-size: 28px;
             margin-bottom: 10px;
         }
         .hero p {
@@ -54,6 +53,7 @@
             text-decoration: none;
             border-radius: 5px;
             margin-top: 20px;
+            font-weight: bold;
         }
         .features {
             margin: 20px 0;
@@ -79,38 +79,72 @@
 <body>
     <div class="container">
         <div class="header">
-            <!-- Logo do Projeto -->
-
             <h1>Projeto Solidário</h1>
         </div>
-
+        {% if empresa %}
         <div class="hero">
-            <h1>Bem-vindo, {{primeiro_nome}}  {{segundo_nome}}!</h1>
-            <p>Obrigado por se inscrever no nosso projeto. Estamos felizes em tê-lo conosco nessa jornada de transformação e impacto social!</p>
-            
+            <h1>Bem-vindo, {{nome_organizador}}!</h1>
+            <p>Você acaba de criar o evento <strong>{{nome_evento}}</strong>, com o apoio da empresa <strong>{{empresa}}</strong>.</p>
+            <p>Para mais informações, entre em contato com o responsável pelo evento:</p>
+            <p><strong>Telefone:</strong> {{telefone}} | <strong>E-mail:</strong> {{email}}</p>
+            <p><strong>Detalhes do Evento:</strong></p>
+            <ul style="text-align: left;">
+                <li><strong>Evento de: </strong> {{tipo_evento}}</li>
+                <li><strong>Data: </strong> {{data_evento}}</li>
+                <li><strong>Limite de participantes: </strong> {{limite_evento}}</li>
+                <li><strong>Endereço: </strong> </li>
+                <li><strong>Rua: </strong>{{rua}} </li>
+                <li><strong>Numero: </strong> {{numero}}</li>
+                <li><strong>Bairro: </strong> {{bairro}}</li>
+                <li><strong>Cidade: </strong> {{cidade}}</li>
+                <li><strong>Estado: </strong>{{estado}} </li>
+                <li><strong>País: </strong>{{pais}} </li>
+            </ul>
         </div>
+        {% else %}
+        <div class="hero">
+            <h1>Bem-vindo, {{nome_organizador}}!</h1>
+            <p>Você acaba de criar o evento <strong>{{nome_evento}}</strong>.</p>
+            <p>Para mais informações, entre em contato com o responsável pelo evento:</p>
+            <p><strong>Telefone:</strong> {{telefone}} | <strong>E-mail:</strong> {{email}}</p>
+            <p><strong>Detalhes do Evento:</strong></p>
+            <ul style="text-align: left;">
+                <li><strong>Evento de: </strong> {{tipo_evento}}</li>
+                <li><strong>Data: </strong> {{data_evento}}</li>
+                <li><strong>Limite de participantes: </strong> {{limite_evento}}</li>
+                <li><strong>Endereço: </strong> </li>
+                <li><strong>Rua: </strong>{{rua}} </li>
+                <li><strong>Numero: </strong> {{numero}}</li>
+                <li><strong>Bairro: </strong> {{bairro}}</li>
+                <li><strong>Cidade: </strong> {{cidade}}</li>
+                <li><strong>Estado: </strong>{{estado}} </li>
+                <li><strong>País: </strong>{{pais}} </li>
+            </ul>
+        </div>
+
+        {% endif %}
 
         <div class="features">
             <div class="feature">
                 <img src="https://img.icons8.com/ios/100/000000/charity.png" alt="Voluntariado">
                 <h2>Voluntariado</h2>
-                <p>Ajude-nos com seu tempo e habilidades. Seja voluntário em nossos eventos e campanhas.</p>
+                <p>Contribua com seu tempo e habilidades. Junte-se a nós em nossos eventos!</p>
             </div>
             <div class="feature">
                 <img src="https://img.icons8.com/ios/100/000000/donation.png" alt="Doações">
                 <h2>Doações</h2>
-                <p>Contribua financeiramente para ajudar aqueles que mais precisam. Toda doação faz a diferença!</p>
+                <p>Faça a diferença com sua contribuição. Cada doação conta!</p>
             </div>
             <div class="feature">
                 <img src="https://img.icons8.com/ios/100/000000/community-grants.png" alt="Campanhas">
                 <h2>Campanhas</h2>
-                <p>Participe de nossas campanhas solidárias e ajude a divulgar ações importantes para a comunidade.</p>
+                <p>Participe e ajude a divulgar ações importantes para a nossa comunidade.</p>
             </div>
         </div>
 
         <div class="footer">
             <p>&copy; 2024 Projeto Solidário. Todos os direitos reservados.</p>
-            <p>Este é um e-mail automático. Não responda a esta mensagem.</p>
+            <p>Este é um e-mail automático. Por favor, não responda.</p>
         </div>
     </div>
 </body>

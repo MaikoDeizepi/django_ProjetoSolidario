@@ -45,7 +45,7 @@
                     <td class="table-cel">{{ evento.email }}</td>
                     <td class="table-cel">{{ evento.data_evento }}</td>
                     <td class="table-cel">{{ evento.get_tipo_evento_display }}</td>
-                    <td class="table-cel">{{ evento.local_evento }}</td>
+                    <td class="table-cel">Rua - {{ evento.endereco.rua }} Bairro - {{ evento.endereco.bairro }} Cidade - {{ evento.endereco.cidade }}</td>
                     <td class="table-cel">{{ evento.limite_evento }}</td>
                   </tr>
                 {% endfor %}
