@@ -1,6 +1,9 @@
 from django.urls import path
 from . import views
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import views as auth_views
+from .views.view_reset.ps_reset import *
+
 
 app_name = "projetosolidario"
 
@@ -92,5 +95,25 @@ urlpatterns = [
     # TELAENDERECO
     path(
         "projetosolidario/endereco/", views.tela_cadastro_endereco, name="criarendereco"
+    ),
+    path(
+        "projetosolidario/password_reset/",
+        CustomPasswordResetView.as_view(),
+        name="password_reset",
+    ),
+    path(
+        "projetosolidario/password_reset_done/",
+        CustomPasswordResetDoneView.as_view(),
+        name="password_reset_done",
+    ),
+    path(
+        "projetosolidario/reset/<uidb64>/<token>/",
+        CustomPasswordResetConfirmView.as_view(),
+        name="password_reset_confirm",
+    ),
+    path(
+        "projetosolidario/reset/done/",
+        CustomPasswordResetCompleteView.as_view(),
+        name="password_reset_complete",
     ),
 ]

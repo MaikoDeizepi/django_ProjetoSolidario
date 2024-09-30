@@ -30,3 +30,6 @@ from .views_endereco.ps_endereco import *
 
 # VIEWEMAIL
 from .views_email.ps_email_cadastro import *
+
+# VIEWRESET
+from .view_reset import *
