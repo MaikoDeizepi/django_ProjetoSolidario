@@ -1,0 +1,12 @@
+asgiref==3.8.1
+Django==5.1
+Faker==28.4.1
+pillow==10.4.0
+pycountry==24.6.1
+python-dateutil==2.9.0.post0
+python-decouple==3.8
+python-http-client==3.3.7
+sendgrid==3.6.5
+sendgrid-django==4.2.0
+six==1.16.0
+sqlparse==0.5.1
