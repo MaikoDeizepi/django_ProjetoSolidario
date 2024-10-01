@@ -22,7 +22,7 @@ ssh-keygen -C 'COMENTÁRIO'
 ### Conectando
 
 ```
-ssh usuário@IP_SERVIDOR
+ ssh Maikodeizepi@34.95.216.33
 ```
 
 ### Comandos iniciais
