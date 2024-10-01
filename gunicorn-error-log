@@ -776,3 +776,164 @@
  - - [01/Oct/2024:13:25:11 -0300] "GET / HTTP/1.1" 200 5181 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
 [2024-10-01 13:26:20 -0300] [14569] [DEBUG] GET /
  - - [01/Oct/2024:13:26:20 -0300] "GET / HTTP/1.1" 200 5181 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46"
+[2024-10-01 13:30:07 -0300] [14568] [INFO] Worker exiting (pid: 14568)
+[2024-10-01 13:30:07 -0300] [14571] [INFO] Worker exiting (pid: 14571)
+[2024-10-01 13:30:07 -0300] [14573] [INFO] Worker exiting (pid: 14573)
+[2024-10-01 13:30:07 -0300] [14570] [INFO] Worker exiting (pid: 14570)
+[2024-10-01 13:30:07 -0300] [14572] [INFO] Worker exiting (pid: 14572)
+[2024-10-01 13:30:07 -0300] [14569] [INFO] Worker exiting (pid: 14569)
+[2024-10-01 16:30:07 +0000] [14567] [INFO] Handling signal: term
+[2024-10-01 16:30:07 +0000] [14567] [ERROR] Worker (pid:14569) was sent SIGTERM!
+[2024-10-01 16:30:07 +0000] [14567] [ERROR] Worker (pid:14571) was sent SIGTERM!
+[2024-10-01 16:30:07 +0000] [14567] [ERROR] Worker (pid:14572) was sent SIGTERM!
+[2024-10-01 16:30:07 +0000] [14567] [ERROR] Worker (pid:14570) was sent SIGTERM!
+[2024-10-01 16:30:07 +0000] [14567] [ERROR] Worker (pid:14573) was sent SIGTERM!
+[2024-10-01 16:30:07 +0000] [14567] [ERROR] Worker (pid:14568) was sent SIGTERM!
+[2024-10-01 16:30:07 +0000] [14567] [INFO] Shutting down: Master
+[2024-10-01 16:30:07 +0000] [15731] [DEBUG] Current configuration:
+  config: ./gunicorn.conf.py
+  wsgi_app: None
+  bind: ['unix:/run/projetosolidario.socket']
+  backlog: 2048
+  workers: 6
+  worker_class: sync
+  threads: 1
+  worker_connections: 1000
+  max_requests: 0
+  max_requests_jitter: 0
+  timeout: 30
+  graceful_timeout: 30
+  keepalive: 2
+  limit_request_line: 4094
+  limit_request_fields: 100
+  limit_request_field_size: 8190
+  reload: False
+  reload_engine: auto
+  reload_extra_files: []
+  spew: False
+  check_config: False
+  print_config: False
+  preload_app: False
+  sendfile: None
+  reuse_port: False
+  chdir: /home/Maikodeizepi/projetosolidarioapp
+  daemon: False
+  raw_env: []
+  pidfile: None
+  worker_tmp_dir: None
+  user: 1002
+  group: 33
+  umask: 0
+  initgroups: False
+  tmp_upload_dir: None
+  secure_scheme_headers: {'X-FORWARDED-PROTOCOL': 'ssl', 'X-FORWARDED-PROTO': 'https', 'X-FORWARDED-SSL': 'on'}
+  forwarded_allow_ips: ['127.0.0.1', '::1']
+  accesslog: -
+  disable_redirect_access_to_syslog: False
+  access_log_format: %(h)s %(l)s %(u)s %(t)s "%(r)s" %(s)s %(b)s "%(f)s" "%(a)s"
+  errorlog: /home/Maikodeizepi/projetosolidarioapp/gunicorn-error-log
+  loglevel: debug
+  capture_output: True
+  logger_class: gunicorn.glogging.Logger
+  logconfig: None
+  logconfig_dict: {}
+  logconfig_json: None
+  syslog_addr: udp://localhost:514
+  syslog: False
+  syslog_prefix: None
+  syslog_facility: user
+  enable_stdio_inheritance: True
+  statsd_host: None
+  dogstatsd_tags: 
+  statsd_prefix: 
+  proc_name: None
+  default_proc_name: project.wsgi:application
+  pythonpath: None
+  paste: None
+  on_starting: <function OnStarting.on_starting at 0x7f8946a2c7c0>
+  on_reload: <function OnReload.on_reload at 0x7f8946a2c900>
+  when_ready: <function WhenReady.when_ready at 0x7f8946a2ca40>
+  pre_fork: <function Prefork.pre_fork at 0x7f8946a2cb80>
+  post_fork: <function Postfork.post_fork at 0x7f8946a2ccc0>
+  post_worker_init: <function PostWorkerInit.post_worker_init at 0x7f8946a2ce00>
+  worker_int: <function WorkerInt.worker_int at 0x7f8946a2cf40>
+  worker_abort: <function WorkerAbort.worker_abort at 0x7f8946a2d080>
+  pre_exec: <function PreExec.pre_exec at 0x7f8946a2d1c0>
+  pre_request: <function PreRequest.pre_request at 0x7f8946a2d300>
+  post_request: <function PostRequest.post_request at 0x7f8946a2d3a0>
+  child_exit: <function ChildExit.child_exit at 0x7f8946a2d4e0>
+  worker_exit: <function WorkerExit.worker_exit at 0x7f8946a2d620>
+  nworkers_changed: <function NumWorkersChanged.nworkers_changed at 0x7f8946a2d760>
+  on_exit: <function OnExit.on_exit at 0x7f8946a2d8a0>
+  ssl_context: <function NewSSLContext.ssl_context at 0x7f8946a2da80>
+  proxy_protocol: False
+  proxy_allow_ips: ['127.0.0.1', '::1']
+  keyfile: None
+  certfile: None
+  ssl_version: 2
+  cert_reqs: 0
+  ca_certs: None
+  suppress_ragged_eofs: True
+  do_handshake_on_connect: False
+  ciphers: None
+  raw_paste_global_conf: []
+  permit_obsolete_folding: False
+  strip_header_spaces: False
+  permit_unconventional_http_method: False
+  permit_unconventional_http_version: False
+  casefold_http_method: False
+  forwarder_headers: ['SCRIPT_NAME', 'PATH_INFO']
+  header_map: drop
+[2024-10-01 16:30:07 +0000] [15731] [INFO] Starting gunicorn 23.0.0
+[2024-10-01 16:30:07 +0000] [15731] [DEBUG] Arbiter booted
+[2024-10-01 16:30:07 +0000] [15731] [INFO] Listening at: unix:/run/projetosolidario.socket (15731)
+[2024-10-01 16:30:07 +0000] [15731] [INFO] Using worker: sync
+[2024-10-01 16:30:07 +0000] [15732] [INFO] Booting worker with pid: 15732
+[2024-10-01 16:30:07 +0000] [15733] [INFO] Booting worker with pid: 15733
+[2024-10-01 16:30:07 +0000] [15734] [INFO] Booting worker with pid: 15734
+[2024-10-01 16:30:07 +0000] [15735] [INFO] Booting worker with pid: 15735
+[2024-10-01 16:30:07 +0000] [15736] [INFO] Booting worker with pid: 15736
+[2024-10-01 16:30:07 +0000] [15737] [INFO] Booting worker with pid: 15737
+[2024-10-01 16:30:07 +0000] [15731] [DEBUG] 6 workers
+[2024-10-01 13:30:11 -0300] [15734] [DEBUG] GET /
+ - - [01/Oct/2024:13:30:11 -0300] "GET / HTTP/1.1" 200 5181 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+[2024-10-01 13:30:12 -0300] [15734] [DEBUG] GET /
+ - - [01/Oct/2024:13:30:12 -0300] "GET / HTTP/1.1" 200 5181 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+[2024-10-01 13:30:13 -0300] [15733] [DEBUG] GET /
+ - - [01/Oct/2024:13:30:13 -0300] "GET / HTTP/1.1" 200 5181 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+[2024-10-01 13:30:13 -0300] [15732] [DEBUG] GET /
+ - - [01/Oct/2024:13:30:13 -0300] "GET / HTTP/1.1" 200 5181 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+[2024-10-01 13:30:14 -0300] [15732] [DEBUG] GET /
+ - - [01/Oct/2024:13:30:14 -0300] "GET / HTTP/1.1" 200 5181 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+[2024-10-01 13:34:59 -0300] [15737] [DEBUG] GET /
+ - - [01/Oct/2024:13:34:59 -0300] "GET / HTTP/1.1" 200 5181 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+[2024-10-01 13:35:00 -0300] [15735] [DEBUG] GET /
+ - - [01/Oct/2024:13:35:00 -0300] "GET / HTTP/1.1" 200 5181 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+[2024-10-01 13:35:00 -0300] [15733] [DEBUG] GET /
+ - - [01/Oct/2024:13:35:00 -0300] "GET / HTTP/1.1" 200 5181 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+[2024-10-01 13:35:01 -0300] [15734] [DEBUG] GET /
+ - - [01/Oct/2024:13:35:01 -0300] "GET / HTTP/1.1" 200 5181 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+[2024-10-01 13:35:01 -0300] [15734] [DEBUG] GET /
+ - - [01/Oct/2024:13:35:01 -0300] "GET / HTTP/1.1" 200 5181 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+[2024-10-01 13:35:01 -0300] [15735] [DEBUG] GET /
+ - - [01/Oct/2024:13:35:01 -0300] "GET / HTTP/1.1" 200 5181 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+[2024-10-01 13:35:01 -0300] [15736] [DEBUG] GET /
+ - - [01/Oct/2024:13:35:01 -0300] "GET / HTTP/1.1" 200 5181 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+[2024-10-01 13:35:02 -0300] [15733] [DEBUG] GET /
+ - - [01/Oct/2024:13:35:02 -0300] "GET / HTTP/1.1" 200 5181 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+[2024-10-01 13:35:02 -0300] [15733] [DEBUG] GET /
+ - - [01/Oct/2024:13:35:02 -0300] "GET / HTTP/1.1" 200 5181 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+[2024-10-01 13:35:02 -0300] [15733] [DEBUG] GET /
+ - - [01/Oct/2024:13:35:02 -0300] "GET / HTTP/1.1" 200 5181 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+[2024-10-01 13:35:02 -0300] [15733] [DEBUG] GET /
+ - - [01/Oct/2024:13:35:02 -0300] "GET / HTTP/1.1" 200 5181 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+[2024-10-01 13:35:06 -0300] [15733] [DEBUG] POST /
+ - - [01/Oct/2024:13:35:06 -0300] "POST / HTTP/1.1" 302 0 "http://34.95.216.33/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+[2024-10-01 13:35:06 -0300] [15737] [DEBUG] GET /projetosolidario/home
+ - - [01/Oct/2024:13:35:06 -0300] "GET /projetosolidario/home HTTP/1.1" 200 3703 "http://34.95.216.33/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+[2024-10-01 13:35:09 -0300] [15732] [DEBUG] GET /projetosolidario/perfil/
+ - - [01/Oct/2024:13:35:09 -0300] "GET /projetosolidario/perfil/ HTTP/1.1" 200 7692 "http://34.95.216.33/projetosolidario/home" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+[2024-10-01 13:35:12 -0300] [15736] [DEBUG] GET /projetosolidario/
+ - - [01/Oct/2024:13:35:12 -0300] "GET /projetosolidario/ HTTP/1.1" 302 0 "http://34.95.216.33/projetosolidario/perfil/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+[2024-10-01 13:35:12 -0300] [15737] [DEBUG] GET /index/
+ - - [01/Oct/2024:13:35:12 -0300] "GET /index/ HTTP/1.1" 200 5181 "http://34.95.216.33/projetosolidario/perfil/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
