@@ -4,7 +4,7 @@
     --link-light-color: rgb(156, 217, 255);
     --clr-white: rgb(245, 245, 255);
     --clr-black: rgb(0, 0, 30);
-    --clr-light-gray: rgb(220, 247, 255);
+    --clr-light-gray: rgb(220, 247, 10%);
     --clr-dark-shadow-5: rgba(0, 0, 10, 5%);
     --clr-dark-shadow-10: rgba(0, 0, 10, 10%);
     --clr-dark-shadow-20: rgba(0, 0, 10, 20%);
@@ -20,7 +20,6 @@
     --default-border-radius: 4px;
 }
 
-/* CSS Reset */
 *,
 *::before,
 *::after {
@@ -30,8 +29,12 @@
 }
 
 html {
-    font-size: 62.5%; /* 1rem = 10px */
+    font-size: 62.5%;
     height: 100%;
+    margin: 0;
+    padding: 0;
+    min-height: max-content;
+    min-width: max-content;
 }
 
 body {
@@ -39,33 +42,41 @@ body {
     line-height: 1.5;
     font-size: var(--small-font-size);
     color: var(--clr-black);
+    -webkit-font-smoothing: antialiased;
     background: var(--clr-light-gray);
+    overflow-x: hidden;
+    padding: 10px; 
+
+    min-width: 150lvh;
+    overflow-x: auto;
     padding-bottom: 50px;
-    overflow-x: hidden; /* Remove rolagem horizontal */
+
+
 }
 
+
 footer {
-    position: fixed;
+    position: fixed; /* Ou use 'sticky' se preferir */
     bottom: 0;
     width: 100%;
     height: auto;
-    background-color: #f8f9fa;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    padding: 1rem 0;
+    background-color: #f8f9fa; /* Exemplo de cor de fundo */
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* Exemplo de sombra */
+    text-align: center; /* Centralizar o texto */
+    padding: 2px 0; /* Espaçamento interno */
 }
 
 img,
 svg {
     display: block;
     max-width: 100%;
-    height: auto;
 }
 
 .header {
     background: linear-gradient(to right, #8c52ff, #5ce1e6);
     padding: var(--spacing);
     box-shadow: 0 5px 10px 2px var(--clr-dark-shadow-20);
+    z-index: 1;
     position: relative;
     text-align: center;
 }
@@ -79,7 +90,7 @@ svg {
 .table-link,
 .pagination .step-links a {
     text-decoration: none;
-    transition: filter var(--transition-fast), color var(--transition-fast);
+    transition: filter var(--transition-fast) ease-in-out, color var(--transition-fast) ease-in-out;
 }
 
 .header-link,
@@ -88,7 +99,6 @@ svg {
     color: linear-gradient(to right, #8c52ff, #5ce1e6);
 }
 
-/* Responsividade no layout */
 .menu {
     margin: var(--spacing);
 }
@@ -102,6 +112,7 @@ svg {
 
 .menu-link {
     padding: auto;
+
     border-radius: var(--default-border-radius);
 }
 
@@ -114,6 +125,7 @@ svg {
     margin: calc(var(--spacing) * 2) auto;
     padding: var(--spacing);
     background: linear-gradient(to right, rgba(140, 82, 255, 0.2), rgba(92, 225, 230, 0.2));
+
     box-shadow: 2px 2px 5px var(--clr-dark-shadow-20);
     border-radius: var(--default-border-radius);
 }
@@ -137,7 +149,7 @@ svg {
 
 .table-row {
     text-align: left;
-    transition: background-color var(--transition-fast);
+    transition: background-color var(--transition-fast) ease-in-out;
 }
 
 .table-row:nth-of-type(2n) {
@@ -166,29 +178,10 @@ svg {
     color: var(--clr-black);
 }
 
-/* Adicionando media queries para responsividade */
 @media (min-width: 600px) {
-    .content {
-        padding: var(--spacing) 3rem;
-    }
-}
-
-@media (max-width: 600px) {
-    .header-heading {
-        font-size: var(--big-font-size);
-    }
-
-    .content {
-        margin: var(--spacing) auto;
-        padding: var(--spacing);
-    }
-
-    .contacts-table {
-        min-width: 100%; /* Tabela responsiva */
-    }
-
-    footer {
-        padding: 1rem;
+    .single-contact {
+        max-width: 80%;
+        margin: calc(var(--spacing) * 2) auto;
     }
 }
 
@@ -246,17 +239,39 @@ svg {
     border: 1px solid rgba(255, 255, 0, 0.9);
 }
 
-/* Formulários */
 .form-wrapper {
     max-width: 60rem;
     margin: var(--spacing) auto;
 }
+
+.wrapper {
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+    padding: var(--spacing);
+}
+
 
 .form-group {
     display: flex;
     flex-direction: column;
     padding-bottom: var(--spacing);
     align-items: flex-start;
+}
+
+.form-group p,
+.errorlist {
+    margin: 1em 0;
+}
+
+.errorlist {
+    list-style: none;
+    font-size: var(--smaller-font-size);
+    color: tomato;
 }
 
 .form-group input,
@@ -281,7 +296,11 @@ svg {
     padding: 1rem 2rem;
     border-radius: var(--default-border-radius);
     cursor: pointer;
+
+
 }
+
+
 
 .btn:hover {
     filter: brightness(90%);
@@ -298,7 +317,9 @@ svg {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+
 }
+
 
 .navbar-collapse {
     display: flex;
@@ -312,6 +333,10 @@ svg {
     align-items: auto;
 }
 
+.navbar-brand{
+    font-size: 20px;
+    object-fit: cover;
+}
 .nav-item {
     margin-left: 15px;
 }
@@ -320,23 +345,46 @@ svg {
     color: rgb(28, 30, 131);
     font-size: 18px;
     padding: 8px 12px;
+
 }
+
+
 
 .nav-link:hover {
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: var(--default-border-radius);
 }
 
-@media (max-width: 768px) {
-    .navbar-collapse {
-        flex-direction: column;
-    }
-
-    .nav-item {
-        margin-left: 0;
-        margin-top: 10px;
-    }
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: var(--default-border-radius);
+    list-style: none;
+    padding: 10px 0;
 }
+
+.dropdown-item {
+    padding: 8px 16px;
+    color: #333;
+}
+
+.dropdown-item:hover {
+    background-color: #8c52ff;
+    color: white;
+}
+
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.form-content{
+
+    display: flexbox;
+}
+
+
 
 .contact-links {
     margin-block: calc(var(--small-font-size) * 2);
@@ -345,20 +393,222 @@ svg {
     gap: 0 var(--spacing);
 }
 
-/* Ajustes adicionais para acessibilidade */
 .btn-link {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+    font-size: var(--small-font-size);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 1rem;
+    display: block;
+    line-height: var(--small-font-size);
 }
 
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
+.btn-delete {
+    background: tomato;
 }
+
+.calendar th {
+    padding: 15px;
+    text-align: center;
+    font-size: 16px;
+
+    background-color: #69d8dc;
+    /* Cor de fundo para cabeçalhos */
+    border-bottom: 2px solid #ddd;
+    /* Borda inferior */
+}
+
+.calendar td {
+    width: 14.28%;
+    /* Divide igualmente as colunas */
+    height: 80px;
+    /* Aumenta a altura das células */
+    padding: 10px;
+    text-align: left;
+    /* Alinhamento do texto à esquerda */
+    vertical-align: top;
+    /* Alinhamento vertical no topo */
+    border: 1px solid #ddd;
+    /* Borda clara */
+    transition: background-color 0.3s ease;
+    /* Animação de hover */
+}
+
+.calendar td.has-event {
+    background-color: #e7f3ff;
+    /* Azul claro para células com eventos */
+}
+
+/* Efeito de hover nas células */
+.calendar td:hover {
+    background-color: #f7f7f7;
+    /* Cor de fundo ao passar o mouse */
+}
+
+.month {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    margin: 10px 0;
+}
+
+/* Estilos para a data */
+.date {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+/* Lista de eventos dentro das células */
+.calendar ul {
+    list-style: none;
+    /* Remove marcadores da lista */
+    padding: 5px 0 0 0;
+    /* Espaçamento superior */
+    margin: 0;
+    text-align: center;
+}
+
+/* Estilo dos links de eventos */
+.calendar a {
+    color: #0d0d7f;
+    text-decoration: none;
+}
+
+.calendar a:hover {
+    text-decoration: underline;
+    /* Sublinhado ao passar o mouse */
+}
+
+form-calendar {
+    max-width: 600px;
+    /* Define uma largura máxima para o formulário */
+    margin: 20px auto;
+    /* Centraliza o formulário na página */
+    padding: 20px;
+    border: 1px solid #ddd;
+    /* Borda leve ao redor do formulário */
+    border-radius: 8px;
+    /* Cantos arredondados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra suave */
+    background-color: #fff;
+    /* Fundo branco */
+}
+
+/* Estilos para a tabela do formulário */
+table {
+    width: 100%;
+    /* Ocupa toda a largura disponível */
+    border-collapse: collapse;
+    /* Remove espaços entre células */
+}
+
+/* Estilos para as células do formulário */
+table td {
+    padding: 10px;
+    /* Espaçamento interno */
+    text-align: center;
+    /* Centraliza o texto das células */
+}
+
+/* Centraliza o texto dos rótulos do formulário */
+label {
+    text-align: right;
+    /* Alinhamento à direita */
+    display: block;
+    /* Força o label a ser exibido em uma linha separada */
+    margin-bottom: 5px;
+    /* Espaçamento inferior */
+}
+
+/* Estilos para os campos de entrada */
+input,
+select,
+textarea {
+    width: 90%;
+    /* Largura dos campos de entrada */
+    padding: 10px;
+    border: 1px solid #ddd;
+    /* Borda leve */
+    border-radius: 4px;
+    /* Cantos levemente arredondados */
+    font-size: 14px;
+    margin-bottom: 10px;
+    /* Espaço entre os campos */
+}
+
+/* Estilos para as mensagens de erro */
+.alert-danger {
+    color: #721c24;
+    /* Cor do texto */
+    background-color: #f8d7da;
+    /* Cor de fundo */
+    border-color: #f5c6cb;
+    /* Cor da borda */
+    padding: 10px;
+    margin-bottom: 15px;
+    /* Espaçamento inferior */
+    border-radius: 4px;
+    /* Cantos levemente arredondados */
+}
+
+/* Estilos para o contêiner dos botões */
+.button-container {
+    display: flex;
+    /* Usa flexbox para o alinhamento */
+    justify-content: center;
+    /* Centraliza os botões */
+    gap: 15px;
+    /* Espaço entre os botões */
+    margin-top: 20px;
+    /* Espaçamento superior */
+}
+
+/* Estilos para os botões */
+.btn {
+    background-color: #17a2b8;
+    /* Cor de fundo */
+    color: white;
+    /* Cor do texto */
+    padding: 10px 20px;
+    /* Espaçamento interno */
+    text-decoration: none;
+    /* Remove sublinhado */
+    border-radius: 8px;
+    /* Cantos arredondados */
+    border: none;
+    /* Remove a borda */
+    font-size: 14px;
+    /* Tamanho da fonte */
+    cursor: pointer;
+    /* Muda o cursor ao passar sobre o botão */
+    transition: background-color 0.3s ease;
+    /* Animação de hover */
+}
+
+.btn:hover {
+    background-color: #138496;
+    /* Cor de fundo ao passar o mouse */
+}
+
+.button-container-2 {
+    display: flex;
+    justify-content: center; /* Alinha os botões ao centro */
+    gap: 300px; /* Espaçamento entre os botões */
+    margin: auto; /* Margem para espaçamento */
+  }
+
+  /* Estilos para os botões commit */
+  .button-container-2 .btn {
+    background-color: #17a2b8;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease; /* Animação de hover */
+  }
+
+  .button-container .btn:hover {
+    background-color: #138496; /* Cor ao passar o mouse */
+  }
+
+  
