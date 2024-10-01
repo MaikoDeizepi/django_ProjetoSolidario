@@ -63,7 +63,7 @@ Configurando os repositórios
 cd ~/projetosolidariorepo
 git init --bare
 cd ..
-cd ~/agendaapp
+cd ~/projetosolidarioapp
 git init
 git remote add projetosolidariorepo ~/projetosolidariorepo
 git add .
@@ -90,7 +90,7 @@ git pull projetosolidariorepo main
 ```
 sudo -u postgres psql
 
-postgres=# create role maikodeizepi with login superuser createdb createrole password 'it6hhV8k$hn9^:f,';
+postgres=# create role maikodeizepi with login superuser createdb createrole password '*w.D[t+5ZWVW&ENcfAs7';
 CREATE ROLE
 postgres=# create database projetosolidario with owner maikodeizepi;
 CREATE DATABASE
@@ -112,7 +112,7 @@ Cole os dados.
 ## Configurando o Django no servidor
 
 ```
-cd ~/agendaapp
+cd ~/projetosolidarioapp
 python3.11 -m venv venv
 . venv/bin/activate
 pip install --upgrade pip

@@ -1,0 +1,75 @@
+###############################################################################
+# Replace
+# projetosolidario the name of the gunicorn file you want
+# Maikodeizepi your user name
+# projetosolidarioapp the folder name of your project
+# project the folder name where you find a file called wsgi.py
+#
+###############################################################################
+# Criando o arquivo projetosolidario.socket
+sudo nano /etc/systemd/system/projetosolidario.socket
+
+###############################################################################
+# Conteúdo do arquivo
+[Unit]
+Description=gunicorn projetosolidario socket
+
+[Socket]
+ListenStream=/run/projetosolidario.socket
+
+[Install]
+WantedBy=sockets.target
+
+###############################################################################
+# Criando o arquivo projetosolidario.service
+sudo nano /etc/systemd/system/projetosolidario.service
+
+###############################################################################
+# Conteúdo do arquivo
+[Unit]
+Description=Gunicorn daemon (You can change if you want)
+Requires=projetosolidario.socket
+After=network.target
+
+[Service]
+User=Maikodeizepi
+Group=www-data
+Restart=on-failure
+# EnvironmentFile=/home/Maikodeizepi/projetosolidarioapp/.env
+WorkingDirectory=/home/Maikodeizepi/projetosolidarioapp
+# --error-logfile --enable-stdio-inheritance --log-level and --capture-output
+# are all for debugging purposes.
+ExecStart=/home/Maikodeizepi/projetosolidarioapp/venv/bin/gunicorn \
+          --error-logfile /home/Maikodeizepi/projetosolidarioapp/gunicorn-error-log \
+          --enable-stdio-inheritance \
+          --log-level "debug" \
+          --capture-output \
+          --access-logfile - \
+          --workers 6 \
+          --bind unix:/run/projetosolidario.socket \
+          project.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+
+###############################################################################
+# Ativando
+sudo systemctl start projetosolidario.socket
+sudo systemctl enable projetosolidario.socket
+
+# Checando
+sudo systemctl status projetosolidario.socket
+curl --unix-socket /run/projetosolidario.socket localhost
+sudo systemctl status projetosolidario
+
+# Restarting
+sudo systemctl restart projetosolidario.service
+sudo systemctl restart projetosolidario.socket
+sudo systemctl restart projetosolidario
+
+# After changing something
+sudo systemctl daemon-reload
+
+# Debugging
+sudo journalctl -u projetosolidario.service
+sudo journalctl -u projetosolidario.socket
