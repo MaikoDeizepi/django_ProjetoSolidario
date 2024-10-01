@@ -5,7 +5,7 @@ from django.contrib.auth.views import PasswordResetConfirmView
 
 
 class CustomPasswordResetView(PasswordResetView):
-    template_name = "registration/password_reset.html"  # Nome do seu template
+    template_name = "registration/password_reset.html"
 
 
 class CustomPasswordResetDoneView(PasswordResetDoneView):
