@@ -937,3 +937,5 @@
  - - [01/Oct/2024:13:35:12 -0300] "GET /projetosolidario/ HTTP/1.1" 302 0 "http://34.95.216.33/projetosolidario/perfil/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
 [2024-10-01 13:35:12 -0300] [15737] [DEBUG] GET /index/
  - - [01/Oct/2024:13:35:12 -0300] "GET /index/ HTTP/1.1" 200 5181 "http://34.95.216.33/projetosolidario/perfil/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0.0.0 Safari/537.36 Edg/129.0.0.0"
+[2024-10-01 13:37:49 -0300] [15737] [DEBUG] GET /
+ - - [01/Oct/2024:13:37:49 -0300] "GET / HTTP/1.1" 200 5181 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46"
