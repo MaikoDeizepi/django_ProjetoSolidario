@@ -16,7 +16,12 @@ class UsuarioAdmin(admin.ModelAdmin):
 
 @admin.register(models.Empresa)
 class EmpresaAdmin(admin.ModelAdmin):
-    list_display = "id", "razao_social", "nome_fantasia"
+    list_display = (
+        "id",
+        "razao_social",
+        "nome_fantasia",
+        "owner",
+    )
 
 
 @admin.register(models.Endereco)
@@ -26,7 +31,12 @@ class EnderecoAdmin(admin.ModelAdmin):
 
 @admin.register(models.Evento)
 class EventoAdmin(admin.ModelAdmin):
-    list_display = "id", "nome_organizador", "tipo_evento"
+    list_display = (
+        "id",
+        "nome_organizador",
+        "tipo_evento",
+        "owner",
+    )
 
 
 admin.site.register(models.Event)

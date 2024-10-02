@@ -78,3 +78,12 @@ class EventoForm(forms.ModelForm):
                 ValidationError("O Telefone não deve conter letras", code="invalid"),
             )
         return telefone  # Retorna o telefone "limpo"
+
+    def save(self, commit=True):
+        cleaned_data = self.cleaned_data
+        evento = super().save(commit=False)
+
+        if commit:
+            evento.save()
+
+        return evento

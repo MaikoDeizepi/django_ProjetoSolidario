@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url="projetosolidario:index")
 def consultar_eventos(request):
 
-    eventos = Evento.objects.all().order_by("id")
+    eventos = Evento.objects.filter(owner=request.user).order_by("id")
 
     paginator = Paginator(eventos, 10)
     page_number = request.GET.get("page")

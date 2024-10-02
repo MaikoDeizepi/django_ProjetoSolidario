@@ -36,7 +36,9 @@ def tela_cadastro(request):
         }
 
         if form.is_valid():
-            empresa = form.save()
+            empresa = form.save(commit=False)
+            empresa.owner = request.user
+            empresa.save()
             enviar_email_cadastro(empresa)
             return redirect("projetosolidario:empresa")
 
@@ -55,7 +57,7 @@ def tela_cadastro(request):
 
 @login_required(login_url="projetosolidario:index")
 def updateempresa(request, empresa_id):
-    empresa = get_object_or_404(Empresa, pk=empresa_id)
+    empresa = get_object_or_404(Empresa, pk=empresa_id, owner=request.user)
     form_action = reverse("projetosolidario:updatempresa", args=(empresa_id,))
 
     if request.method == "POST":
@@ -104,7 +106,7 @@ def updateempresa(request, empresa_id):
 
 @login_required(login_url="projetosolidario:index")
 def deletempresa(request, empresa_id):
-    empresa = get_object_or_404(Empresa, pk=empresa_id)
+    empresa = get_object_or_404(Empresa, pk=empresa_id, owner=request.user)
 
     confirmation = request.POST.get("confirmation", "no")
 
