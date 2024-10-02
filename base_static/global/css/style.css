@@ -317,9 +317,7 @@ svg {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-
 }
-
 
 .navbar-collapse {
     display: flex;
@@ -333,10 +331,11 @@ svg {
     align-items: auto;
 }
 
-.navbar-brand{
+.navbar-brand {
     font-size: 20px;
     object-fit: cover;
 }
+
 .nav-item {
     margin-left: 15px;
 }
@@ -345,10 +344,7 @@ svg {
     color: rgb(28, 30, 131);
     font-size: 18px;
     padding: 8px 12px;
-
 }
-
-
 
 .nav-link:hover {
     background-color: rgba(255, 255, 255, 0.2);
@@ -378,6 +374,23 @@ svg {
 .nav-item.dropdown:hover .dropdown-menu {
     display: block;
 }
+
+/* Ajustes para dispositivos móveis */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 24px; /* Aumenta o tamanho da fonte */
+    }
+
+    .nav-link {
+        font-size: 20px; /* Aumenta o tamanho da fonte */
+        padding: 12px 16px; /* Aumenta o padding */
+    }
+
+    .navbar {
+        padding: 15px 20px; /* Aumenta o padding da navbar */
+    }
+}
+
 
 .form-content{
 

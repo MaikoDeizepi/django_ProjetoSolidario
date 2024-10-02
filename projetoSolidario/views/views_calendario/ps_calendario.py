@@ -42,7 +42,7 @@ class CalendarView(View):
 
         # Aqui você deve garantir que 'eventos' seja uma queryset
         eventos = Evento.objects.filter(
-            data_evento__gte=first_day, data_evento__lte=last_day
+            data_evento__gte=first_day, data_evento__lte=last_day, owner=request.user
         )
 
         cal = Calendar(

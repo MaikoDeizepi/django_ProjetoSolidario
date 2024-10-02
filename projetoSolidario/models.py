@@ -2,7 +2,7 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
-import pycountry
+
 
 # Create your models here.
 
@@ -50,6 +50,7 @@ class Empresa(models.Model):
     cnpj = models.CharField(max_length=18)
     telefone = models.CharField(max_length=14)
     email = models.EmailField(max_length=254)
+    owner = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self):
         return f"{self.razao_social} {self.nome_fantasia}"
@@ -81,6 +82,7 @@ class Evento(models.Model):
         default=timezone.now,
     )
     limite_evento = models.CharField(max_length=5)
+    owner = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self):
         return f"{self.nome_organizador} {self.tipo_evento}"
@@ -110,6 +112,7 @@ class Event(models.Model):
     description = models.TextField()
     start_time = models.DateTimeField()
     end_time = models.DateTimeField()
+    owner = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True)
 
     def save(self, *args, **kwargs):
         # Certificar-se de que `start_time` e `end_time` são timezone-aware

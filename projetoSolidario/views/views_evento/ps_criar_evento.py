@@ -20,10 +20,13 @@ def criar_evento(request):
         context = {
             "form_evento": form_evento,
             "form_action": form_action,
+            "title": "Cadastro Evento",
         }
 
         if form_evento.is_valid():
-            form_evento.save()
+            evento = form_evento.save(commit=False)
+            evento.owner = request.user
+            evento.save()
             enviar_email_cadastro(form_evento.save())
             return redirect("projetosolidario:eventos")
 
@@ -41,8 +44,11 @@ def criar_evento(request):
 
 
 @login_required(login_url="projetosolidario:index")
-def updateevento(request, evento_id):
-    eventos = get_object_or_404(Evento, id=evento_id)
+def updateevento(
+    request,
+    evento_id,
+):
+    eventos = get_object_or_404(Evento, id=evento_id, owner=request.user)
     form_action_evento = reverse("projetosolidario:updateevento", args=(evento_id,))
 
     if request.method == "POST":
@@ -89,7 +95,7 @@ def updateevento(request, evento_id):
 
 @login_required(login_url="projetosolidario:index")
 def deleteevento(request, evento_id):
-    eventos = get_object_or_404(Evento, pk=evento_id)
+    eventos = get_object_or_404(Evento, pk=evento_id, owner=request.user)
 
     confirmation = request.POST.get("confirmation", "no")
 

@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url="projetosolidario:index")
 def editar_empresa(request):
 
-    empresa = Empresa.objects.filter().all().order_by("id")
+    empresa = Empresa.objects.filter(owner=request.user).order_by("id")
 
     paginator = Paginator(empresa, 10)
     page_number = request.GET.get("page")

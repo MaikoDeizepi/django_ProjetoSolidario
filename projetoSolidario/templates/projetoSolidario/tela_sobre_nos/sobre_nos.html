@@ -2,6 +2,7 @@
 {% include 'global/partials/_navbar.html' %}
 
 <style>
+    @media (min-width: 769px) {
     body {
         font-family: Arial, sans-serif;
         line-height: 1.6;
@@ -26,12 +27,13 @@
         margin-bottom: 20px;
     }
     footer {
-        position: relative;
+        position: fixed;
     }
-    @media (max-width: 600px) {
+    
         .content {
             padding: 10px;
         }
+        
     }
 </style>
 
