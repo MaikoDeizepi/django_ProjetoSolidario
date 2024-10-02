@@ -375,7 +375,7 @@ svg {
     display: block;
 }
 
-/* Ajustes para dispositivos móveis */
+
 @media (max-width: 768px) {
     .navbar-brand {
         font-size: 24px; /* Aumenta o tamanho da fonte */
@@ -429,7 +429,7 @@ svg {
     background-color: #69d8dc;
     /* Cor de fundo para cabeçalhos */
     border-bottom: 2px solid #ddd;
-    /* Borda inferior */
+  
 }
 
 .calendar td {
