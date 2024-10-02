@@ -375,7 +375,7 @@ svg {
     display: block;
 }
 
-/* Ajustes para dispositivos móveis */
+
 @media (max-width: 768px) {
     .navbar-brand {
         font-size: 24px; /* Aumenta o tamanho da fonte */
