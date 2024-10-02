@@ -440,7 +440,7 @@ svg {
     /* Azul claro para células com eventos */
 }
 
-/* Efeito de hover nas células */
+
 .calendar td:hover {
     background-color: #f7f7f7;
     /* Cor de fundo ao passar o mouse */
