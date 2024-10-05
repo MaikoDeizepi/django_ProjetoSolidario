@@ -9,6 +9,8 @@ media/
 project/local_settings.py
 .gunicorn-error-log
 comandos/
+.server.md 
+
 # Backup files #
 *.bak
 

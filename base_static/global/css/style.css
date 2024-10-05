@@ -44,9 +44,7 @@ body {
     color: var(--clr-black);
     -webkit-font-smoothing: antialiased;
     background: var(--clr-light-gray);
-    overflow-x: hidden;
-    padding: 10px; 
-
+    overflow-x: hidden; 
     min-width: 150lvh;
     overflow-x: auto;
     padding-bottom: 50px;

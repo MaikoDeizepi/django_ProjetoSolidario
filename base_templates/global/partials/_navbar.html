@@ -1,7 +1,4 @@
 {% load static %}
-
-<!DOCTYPE html>
-<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,15 +11,14 @@
       @import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
 
       * {
-        margin: 0;
-        padding: 0;
+    
         box-sizing: border-box;
         font-family: "Rubik", sans-serif;
       }
       
       /* Esse sobe pro Git */
       nav {
-        height: 70px;
+        height: 80px;
         background-image: linear-gradient(to right, #8c52ff, #5ce1e6);
         color: rgb(220, 220, 220);
         padding: 0 3rem;
@@ -30,7 +26,7 @@
         justify-content: space-between;
         align-items: center;
         position: sticky;
-        top: 0;
+       
       }
  
       .logo h2 {
@@ -142,13 +138,12 @@
     </style>
   </head>
 
-  <html>
+
     <head>
       <meta charset="utf-8" />
       <meta http-equiv="X-UA-Compatible" content="IE=edge" />
       <title>Nav Bar</title>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
-      <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     </head>
 
     {% if user.is_authenticated %}
@@ -244,4 +239,3 @@
       {% endif %}
      
     </body>
-  </html>

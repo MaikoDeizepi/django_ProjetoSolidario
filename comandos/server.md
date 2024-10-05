@@ -115,6 +115,7 @@ Cole os dados.
 cd ~/projetosolidarioapp
 python3.11 -m venv venv
 . venv/bin/activate
+sudo systemctl start postgresql@16-main
 pip install --upgrade pip
 pip install django
 pip install pillow
