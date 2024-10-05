@@ -56,8 +56,7 @@ body {
 }
 
 footer {
-    position: fixed; /* Ou use 'sticky' se preferir */
-    bottom: 0;
+    position: fixed; 
     width: 100%;
     height: auto;
     background-color: #f8f9fa; /* Exemplo de cor de fundo */
