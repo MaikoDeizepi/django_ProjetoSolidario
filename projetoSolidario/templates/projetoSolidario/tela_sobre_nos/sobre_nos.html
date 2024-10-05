@@ -26,12 +26,17 @@
     p {
         margin-bottom: 20px;
     }
-    footer {
-        position: fixed;
-    }
+    
     
         .content {
             padding: 10px;
+        }
+        #tela-cadastros {
+      
+            text-align: center;
+            position: sticky;
+            bottom: 0;
+            width: 100%;
         }
         
     }
@@ -64,4 +69,29 @@
     prática e útil para as organizações envolvidas.</p>
 </main>
 
-{% include 'global/partials/_footer.html' %}
+<!-- Remove the container if you want to extend the Footer to full width. -->
+</body>
+<footer id="tela-cadastros" class="text-center text-lg-start" style="background: linear-gradient(to right, #8c52ff, #5ce1e6);">
+    <div class="container d-flex justify-content-center py-2">
+        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #3392b5;">
+            <i class="fab fa-facebook-f"></i>
+        </button>
+        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #3392b5;">
+            <i class="fab fa-youtube"></i>
+        </button>
+        <button type="button" class="btn btn-primary btn-lg btn-floating mx-2" style="background-color: #3392b5;">
+            <i class="fab fa-instagram"></i>
+        </button>
+
+    </div>
+
+    <!-- Copyright -->
+    <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2024 Copyright:
+        <a class="text-white" href="#">Projeto Solidario</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+
+</html>
+<!-- End of .container -->

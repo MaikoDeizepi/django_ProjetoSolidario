@@ -52,7 +52,12 @@ body {
 
 }
 }
-
+#tela-cadastros{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    
+}
 footer {
     position: fixed; 
     width: 100%;
