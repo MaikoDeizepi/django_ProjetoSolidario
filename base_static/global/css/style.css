@@ -45,7 +45,7 @@ body {
     -webkit-font-smoothing: antialiased;
     background: var(--clr-light-gray);
     overflow-x: hidden;
-    padding: 10px; 
+   
 
     min-width: 150lvh;
     overflow-x: auto;
