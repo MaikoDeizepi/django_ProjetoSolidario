@@ -59,7 +59,7 @@ footer {
     position: fixed; 
     width: 100%;
     height: auto;
-    background-color: #f8f9fa; /* Exemplo de cor de fundo */
+    background-color: #f8f9fa; 
     box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* Exemplo de sombra */
     text-align: center; /* Centralizar o texto */
     padding: 2px 0; /* Espaçamento interno */
