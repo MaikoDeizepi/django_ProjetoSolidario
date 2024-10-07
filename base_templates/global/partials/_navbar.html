@@ -222,23 +222,26 @@
       {% else %}
 
       <body>
-        <nav>
+        <nav class="nav-bar-maiko">
           <input type="checkbox" id="check" />
           <label for="check" class="menu">
             <i class="bi bi-list" style="font-size: 30px;"></i>
   
           </label>
+          
           <div class="logo">
-            <a href="{% url 'projetosolidario:index' %}"
-            >
-            <h2>Evento Solidario</h2>
+            <a href="{% url 'projetosolidario:home' %}">
+
+              <h2>Evento Solidario</h2>
             </a>
+          
           </div>
           
-              
+
+            
+            
           </div>
         </nav>
-
       {% endif %}
      
     </body>
