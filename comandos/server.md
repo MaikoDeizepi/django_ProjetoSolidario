@@ -51,6 +51,8 @@ git config --global user.email 'maikodeizepi@hotmail.com'
 git config --global init.defaultBranch main
 ```
 
+git push origin main
+
 Criando as pastas do projeto e repositório
 
 ```

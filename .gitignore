@@ -9,6 +9,7 @@ media/
 project/local_settings.py
 gunicorn-error-log
 comandos/
+.server.md
 
 # Backup files #
 *.bak
@@ -140,3 +141,5 @@ GitHub.sublime-settings
 !.vscode/launch.json
 !.vscode/extensions.json
 .history
+comandos/server.md
+comandos/server.md
