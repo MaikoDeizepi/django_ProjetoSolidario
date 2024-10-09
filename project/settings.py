@@ -148,9 +148,7 @@ EMAIL_PORT = config("EMAIL_PORT")
 EMAIL_HOST = config("EMAIL_HOST")
 
 
-CORS_ALLOW_ORIGINS = [
-    "http://localhost:8080",
-]
+CORS_ALLOW_ORIGINS = ["http://localhost:8080", "https://projetoeventosolidario.com.br/"]
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
