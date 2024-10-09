@@ -99,6 +99,8 @@ GRANT
 postgres=# \q
 
 sudo systemctl restart postgresql
+sudo systemctl start postgresql
+
 ```
 
 ## Criando o local_settings.py no servidor

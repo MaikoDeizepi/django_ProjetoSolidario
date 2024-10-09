@@ -33,3 +33,7 @@ from .views_email.ps_email_cadastro import *
 
 # VIEWRESET
 from .view_reset import *
+
+
+# VIEWAPI
+from .views_api.ps_user_api import *

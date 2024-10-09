@@ -3,6 +3,8 @@ from . import views
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import views as auth_views
 from .views.view_reset.ps_reset import *
+from rest_framework.authtoken.views import obtain_auth_token
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 
 app_name = "projetosolidario"
@@ -114,4 +116,14 @@ urlpatterns = [
         CustomPasswordResetCompleteView.as_view(),
         name="password_reset_complete",
     ),
+    # TELAAPI
+    path(
+        "api/token/", obtain_auth_token, name="api_token_auth"
+    ),  # Para autenticação via Token
+    path("api/users/", views.get_users, name="api_users"),
+    path("api/users/<int:id>/", views.get_users_by_id, name="api_users_id"),
+    path("api/event/", views.get_events, name="api_users"),
+    path("api/event/<int:id>/", views.get_events_by_id, name="api_users_id"),
+    path("api/empresa/", views.get_empresa, name="api_users"),
+    path("api/empresa/<int:id>/", views.get_empresa_by_id, name="api_users_id"),
 ]

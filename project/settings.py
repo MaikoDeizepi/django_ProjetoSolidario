@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "rest_framework",
+    "rest_framework.authtoken",
+    "corsheaders",
     "projetoSolidario",
 ]
 
@@ -50,6 +53,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "projetoSolidario.middleware.LogoutOnHomepageMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = "project.urls"
@@ -143,6 +147,23 @@ EMAIL_USE_TLS = config("EMAIL_USE_TLS")
 EMAIL_PORT = config("EMAIL_PORT")
 EMAIL_HOST = config("EMAIL_HOST")
 
+
+CORS_ALLOW_ORIGINS = [
+    "http://localhost:8080",
+]
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework.authentication.TokenAuthentication",  # Atualize para TokenAuthentication
+    ),
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",  # Manter como IsAuthenticated para proteger as rotas
+    ],
+    "DEFAULT_THROTTLE_RATES": {
+        "user": "100/day",  # Limite por usuário
+        "anon": "1/hour",  # Limite para usuários anônimos
+    },
+}
 
 try:
     from project.local_settings import *
