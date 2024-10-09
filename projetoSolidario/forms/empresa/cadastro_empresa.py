@@ -5,7 +5,6 @@ from django import forms
 
 
 class EmpresaForm(forms.ModelForm):
-
     class Meta:
         model = Empresa
         fields = (
@@ -38,6 +37,13 @@ class EmpresaForm(forms.ModelForm):
                     "O CNPJ deve conter apenas números, pontos e barras", code="invalid"
                 ),
             )
+
+        # Verificar se já existe uma empresa com o mesmo CNPJ
+        if Empresa.objects.filter(cnpj=cnpj).exists():
+            raise ValidationError(
+                "Uma empresa com esse CNPJ já está cadastrada.", code="duplicate_cnpj"
+            )
+
         return cnpj
 
     def save(self, commit=True):

@@ -32,9 +32,8 @@ class EventoForm(forms.ModelForm):
     limite_evento = forms.CharField(
         widget=forms.NumberInput(attrs={"placeholder": "Digite o limite do seu evento"})
     )
-    # Adicionar campo de escolha de empresa
     empresa = forms.ModelChoiceField(
-        queryset=Empresa.objects.all(),  # Certifique-se de que Empresa está importado corretamente
+        queryset=Empresa.objects.all(),
         widget=forms.Select(attrs={"class": "form-control"}),
         required=False,
         label="Empresa que irá auxiliar no Evento",
@@ -58,7 +57,7 @@ class EventoForm(forms.ModelForm):
             "tipo_evento",
             "limite_evento",
             "empresa",
-            "endereco",  # Incluindo campo empresa
+            "endereco",
         )
 
     def __init__(self, *args, **kwargs):
@@ -78,6 +77,24 @@ class EventoForm(forms.ModelForm):
                 ValidationError("O Telefone não deve conter letras", code="invalid"),
             )
         return telefone  # Retorna o telefone "limpo"
+
+    def clean_data_evento(self):
+        data_evento = self.cleaned_data.get("data_evento")
+
+        # Verificar se já existe algum evento na mesma data e horário
+        eventos_conflitantes = Evento.objects.filter(data_evento=data_evento)
+
+        # Excluir o próprio evento se for uma edição
+        if self.instance and self.instance.pk:
+            eventos_conflitantes = eventos_conflitantes.exclude(pk=self.instance.pk)
+
+        if eventos_conflitantes.exists():
+            raise ValidationError(
+                "Já existe um evento marcado para esta data e horário.",
+                code="data_conflito",
+            )
+
+        return data_evento
 
     def save(self, commit=True):
         cleaned_data = self.cleaned_data
